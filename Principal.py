@@ -1,7 +1,10 @@
 from limpar_pausar import *
+import player as pl
+from interface import *
 
-for i in range(10):
-    print("TESTE")
+escolhas = interface()
 
-pause()
-clear()
+mago = pl.player()
+mago._init_(escolhas[0], escolhas[1], escolhas[2], escolhas[3])
+
+mago.calcula_vida()
