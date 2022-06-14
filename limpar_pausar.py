@@ -6,4 +6,4 @@ def clear():
 
 #Função para pausar o programa
 def pause():
-    input("Pressione qualquer tecla para continuar ")
+    input("Pressione Enter para continuar ")
