@@ -3,37 +3,23 @@ from Classes import classes
 
 def interface():
 
-    print("Bem vindo")
+    print("Bem Vindo")
 
-    nome = input("Escolha seu nome: ")
-    classe = None
+    nomePlayer = input("Escolha um nome: ")
 
-    while classe==None:
+    i = 0
 
-        clear()
+    while True:
 
-        print("Escolha seu nome: " + nome)
-        
-        print("\nEscolha uma das classes abaixo: ")
-        for i in ["Bárbaro","Soldado","Patrulheiro","Ladrão","Clérigo"]:
-            print("\n" + classes[i][0] + ":")
+        print(i)
 
-            print("\tAtributos: ")
-            print("\t\t" + "STR: " + str(classes[i][1][0]) + "\t" + "DEX: " + str(classes[i][1][1]))
-            print("\t\t" + "CON: " + str(classes[i][1][2]) + "\t" + "WIS: " + str(classes[i][1][3]))
-            print("\t\t" + "INT: " + str(classes[i][1][4]) + "\t" + "CHA: " + str(classes[i][1][5]))
+        i = int(input("Digite: "))
 
-            print("\tEquipamentos iniciais: ")
-            print("\t\t" + classes[i][2][0] + "\t" + classes[i][2][0] + "\t" + classes[i][2][0])
-        print("\n")
+        if i == 4: break
 
-        classe = classes.get(input("Esolha: "), None)
-        if classe==None:
-            print("Escolha uma classe existente.")
-            pause()
+        print("<<a   ({}/5)   d>>".format(i))
 
-    escolhas = []
-    escolhas.append(nome)
-    escolhas.append(classe[0])
+    print("Fim do loop")
+    pause()
 
-    return escolhas
+interface()
