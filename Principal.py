@@ -1,8 +1,9 @@
-from limpar_pausar import *
+from GerenTerm import *
 from Player import Player
 from interface import *
 
 escolhas = interface()
-mago = Player(escolhas[0],escolhas[1])
 
-mago.calcula_vida()
+player = Player(escolhas[0],escolhas[1])
+player.calcula_vida()
+player.overview()
