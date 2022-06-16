@@ -1,5 +1,5 @@
 from GerenTerm import clear,pause
-from Classes import *
+from GameObject import *
 
 class Player:
 
@@ -8,6 +8,10 @@ class Player:
         self.classe = classes[classe_ID][0]
         self.atributos = classes[classe_ID][1]
         self.equipamentos = classes[classe_ID][2]
+
+        if classe_ID == 0: self.vida = 36
+        elif classe_ID == 1 or classe_ID == 2: self.vida = 30
+        else: self.vida = 24
 
     def calcula_vida(self):
         print("Vida")
@@ -32,3 +36,6 @@ class Player:
 
         pause()
         clear()
+    
+    def mochila():
+        print("Mochila Mochila")

@@ -1,5 +1,5 @@
 from GerenTerm import *
-from Classes import classes
+from GameObject import classes
 
 def interface():
 
