@@ -1,5 +1,4 @@
-from GerenTerm import *
-from Player import Player
+from GameObjects import *
 from interface import *
 
 escolhas = interface()
@@ -7,5 +6,11 @@ escolhas = interface()
 #Lore
 
 player = Player(escolhas[0],escolhas[1])
-player.calcula_vida()
-player.overview()
+
+player.vidaAtual -= 10
+
+player.status()
+
+pocaoCura.efeitos[0](player)
+
+player.status()

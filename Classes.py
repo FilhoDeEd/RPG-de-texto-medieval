@@ -1,11 +1,3 @@
-from Armas import Armas
-from HealPotions import HealPotions
-from Inimigos import Inimigos
-
-#Criar Inimigos aqui:
-#Criar Armas aqui:
-#Criar HealPotions aqui:
-
 #[<Nome>,<Atributos>,<Equipamentos>]
 #Ordem dos atributos: Força, Destreza, Constituição, Sabedoria, Inteligência, Carisma
 classes = {

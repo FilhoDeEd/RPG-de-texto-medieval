@@ -1,5 +1,5 @@
-from GerenTerm import *
-from GameObject import classes
+from GerenTerm import clear,pause
+from Classes import classes
 
 def interface():
 
@@ -28,9 +28,9 @@ def interface():
         print("  " + classes[i][2][1])
         print("  " + classes[i][2][2])
 
-        if i==0: print("\n         ({}/5)   d>>\n".format(i+1))
-        elif i==4: print("\n   <<a   ({}/5)\n".format(i+1))
-        else: print("\n   <<a   ({}/5)   d>>\n".format(i+1))
+        if i==0: print("\n         ({}/6)   d>>\n".format(i+1))
+        elif i==4: print("\n   <<a   ({}/6)\n".format(i+1))
+        else: print("\n   <<a   ({}/6)   d>>\n".format(i+1))
 
         tecla = input("Digite y para escolher: ").lower()
 
@@ -41,11 +41,13 @@ def interface():
             if i > 0: i-=1
 
         elif tecla == 'd': 
-            if i < 4: i+=1
+            if i < 5: i+=1
 
         else:
             print("Selecione uma opção válida.")
             pause()
+
+    clear()
 
     classePlayer = i
 

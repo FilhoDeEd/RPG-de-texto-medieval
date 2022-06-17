@@ -1,5 +1,5 @@
 from GerenTerm import clear,pause
-from GameObject import *
+from Classes import classes
 
 class Player:
 
@@ -9,13 +9,13 @@ class Player:
         self.atributos = classes[classe_ID][1]
         self.equipamentos = classes[classe_ID][2]
 
-        if classe_ID == 0: self.vida = 36
-        elif classe_ID == 1 or classe_ID == 2: self.vida = 30
-        else: self.vida = 24
+        if classe_ID == 0: self.vidaMaxima = 36
+        elif classe_ID == 1 or classe_ID == 2: self.vidaMaxima = 30
+        else: self.vidaMaxima = 24
 
-    def calcula_vida(self):
-        print("Vida")
+        self.vidaAtual = self.vidaMaxima
 
+    #Visão geral sobre o personagem
     def overview(self):
         
         clear()
@@ -36,6 +36,12 @@ class Player:
 
         pause()
         clear()
+
+    #Para saber como vai a vida e outros status corriqueiros
+    def status(self):
+
+        #Dano
+        print("Vida Atual: {}/{}".format(self.vidaAtual,self.vidaMaxima))
     
     def mochila():
-        print("Mochila Mochila")
+        print("Mochila Mochila... Mochila Mochila... Eu sou a mochila...")
