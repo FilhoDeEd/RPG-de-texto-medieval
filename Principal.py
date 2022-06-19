@@ -3,6 +3,8 @@ from interface import interface
 from Levels import levels
 from GameObjects import *
 
+#O jogo foi construido utilizando a versão 3.10.5 do Python
+
 #escolhas = interface()
 
 #Lore
@@ -17,4 +19,4 @@ from GameObjects import *
 
 #player.status()
 
-print(dado())
+print(dado(100,2))
