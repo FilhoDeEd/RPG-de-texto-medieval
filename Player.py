@@ -15,10 +15,6 @@ class Player:
             self.qtdItens = 0
 
         def guardar(self, item: (Arma | Potion)) -> None:
-            
-            if self.qtdItens == self.capacidade:
-                print("*Mochila cheia*")
-                return
         
             self.pilhaMochila.append(item)
             self.qtdItens += 1
