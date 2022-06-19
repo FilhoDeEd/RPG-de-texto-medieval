@@ -1,9 +1,9 @@
 from GerenTerm import clear,pause
-from Classes import classes
+from Dictios import classes
 
 class Player:
 
-    def __init__(self, nome, classe_ID):
+    def __init__(self, nome: str, classe_ID: int) -> None:
         self.nome = nome
         self.classe = classes[classe_ID][0]
         self.atributos = classes[classe_ID][1]
@@ -16,7 +16,7 @@ class Player:
         self.vidaAtual = self.vidaMaxima
 
     #Visão geral sobre o personagem
-    def overview(self):
+    def overview(self) -> None:
         
         clear()
 
@@ -38,10 +38,10 @@ class Player:
         clear()
 
     #Para saber como vai a vida e outros status corriqueiros
-    def status(self):
+    def status(self) -> None:
 
         #Dano
         print("Vida Atual: {}/{}".format(self.vidaAtual,self.vidaMaxima))
     
-    def mochila():
-        print("Mochila Mochila... Mochila Mochila... Eu sou a mochila...")
+    def mochila(self) -> None:
+        pass

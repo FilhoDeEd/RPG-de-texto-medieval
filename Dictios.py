@@ -8,3 +8,10 @@ classes = {
     4:["Clérigo",[13, 8, 14, 15, 10, 12],["Martelo","Armadura de Placas","Símbolo Sagrado"]],
     5:["Mago",[8, 13, 14, 12, 15, 10],["Foco Arcano","Manto","Grimório"]]
 }
+
+raridades = {
+    0:["Comum"],
+    1:["Raro"],
+    2:["Épico"],
+    3:["Lendário"]
+}

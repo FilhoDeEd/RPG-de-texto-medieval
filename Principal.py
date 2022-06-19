@@ -1,16 +1,20 @@
+from GerenTerm import clear,pause
+from interface import interface
+from Levels import levels
 from GameObjects import *
-from interface import *
 
-escolhas = interface()
+#escolhas = interface()
 
 #Lore
 
-player = Player(escolhas[0],escolhas[1])
+#player = Player(escolhas[0],escolhas[1])
 
-player.vidaAtual -= 10
+#player.vidaAtual -= 10
 
-player.status()
+#player.status()
 
-pocaoCura.efeitos[0](player)
+#pocaoCura.efeitos[0](player)
 
-player.status()
+#player.status()
+
+print(dado())

@@ -1,10 +1,14 @@
+from typing import Callable
+from Dictios import raridades
+
 class Arma:
 
-    def __init__(self, nome, peso, isMeele, raridade, dano, defesa, skills):
+    def __init__(self, nome: str, peso: int, isMeele: bool, raridade_ID: int,
+                    dano: int, defesa: int, skills: list[Callable]) -> None:
         self.nome = nome
         self.isMeele = isMeele
         self.peso = peso
-        self.raridade = raridade
+        self.raridade_ID = raridade_ID
         self.dano = dano
         self.defesa = defesa
         self.skills = skills

@@ -1,5 +1,5 @@
 from GerenTerm import clear,pause
-from Classes import classes
+from Dictios import classes
 
 def interface():
 
