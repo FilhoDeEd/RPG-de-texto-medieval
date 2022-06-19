@@ -19,7 +19,7 @@ class Player:
             self.pilhaMochila.append(item)
             self.qtdItens += 1
 
-        def retirarItem(self) -> (Arma | Potion):
+        def retirarItem(self) -> (Arma | Potion | None):
             
             if self.qtdItens == 0:
                 print("*Mochila vázia*")
@@ -32,6 +32,19 @@ class Player:
             self.qtdItens -= 1
 
             return Item
+
+    class Cinto:
+
+        def __init__(self) -> None:
+            self.cinto: list[list[Arma | Potion]] = [[],[],[],[],[]]
+            self.capacidadeMaxSlot = 2
+            self.qtdItensSlots = [0,0,0,0,0]
+        
+        def guardar(self):
+            pass
+
+        def retirarItem(self):
+            pass
 
     def __init__(self, nome: str, classe_ID: int) -> None:
 
@@ -47,8 +60,9 @@ class Player:
         else: self.vidaMaxima = 24
         self.vidaAtual = self.vidaMaxima
 
-        #Mochila:
-        self.mochila = self.Mochila(12)
+        #Mochila e Cinto:
+        self.mochila = self.Mochila()
+        self.cinto = self.Cinto()
 
     #Visão geral sobre o personagem
     def overview(self) -> None:
