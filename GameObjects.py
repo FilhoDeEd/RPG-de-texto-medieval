@@ -19,7 +19,7 @@ def curar_1(player: Player) -> None:
     if player.vidaAtual > player.vidaMaxima:
         player.vidaAtual = player.vidaMaxima
 
-pocaoCura = Potion("Poção de Cura", 1, [curar_1])
+pocaoCura = Potion("Poção de Cura", [curar_1])
 
     #Ideia: Fazer uma poção que "embarralhe" os itens da mochila do player;
     #É só usar o método random.shuffle(), que consegue embarralhar uma lista;

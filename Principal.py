@@ -5,18 +5,18 @@ from GameObjects import *
 
 #O jogo foi construido utilizando a versão 3.10.5 do Python
 
-#escolhas = interface()
+escolhas = interface()
 
 #Lore
 
-#player = Player(escolhas[0],escolhas[1])
+player = Player(escolhas[0],escolhas[1])
 
-#player.vidaAtual -= 10
+player.vidaAtual -= 10
 
-#player.status()
+player.status()
 
-#pocaoCura.efeitos[0](player)
+pocaoCura.efeitos[0](player)
 
-#player.status()
+player.status()
 
-print(dado(100,2))
+print(dado(6,10,True))

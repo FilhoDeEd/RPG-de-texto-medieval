@@ -1,3 +1,4 @@
+import random as rand
 from GerenTerm import clear,pause
 from Dictios import classes
 from Potion import Potion
@@ -36,14 +37,35 @@ class Player:
     class Cinto:
 
         def __init__(self) -> None:
+
             self.cinto: list[list[Arma | Potion]] = [[],[],[],[],[]]
             self.capacidadeMaxSlot = 2
+            self.cargaAtualSlot = [0,0,0,0,0]
             self.qtdItensSlots = [0,0,0,0,0]
         
-        def guardar(self):
-            pass
+        def guardar(self, item: (Arma | Potion)) -> None:
+
+            slotsLivres = []
+
+            for i in range(5):
+                if item.peso + self.cargaAtualSlot[i] <= 2:
+                    slotsLivres.append(i)
+            
+            if slotsLivres.__len__ == 0:
+                print("*Cinto Cheio*")
+                #Faça um método para lidar com isso (pergunte se é pra largar o item, colocar na mochila ou usar já)
+                return
+            
+            randSlot = rand.choice(slotsLivres)
+
+            self.cinto[randSlot].append(item)
+            self.cargaAtualSlot[randSlot] += item.peso
+            self.qtdItensSlots[randSlot] += 1
 
         def retirarItem(self):
+            pass
+
+        def cintoCheio(self):
             pass
 
     def __init__(self, nome: str, classe_ID: int) -> None:
