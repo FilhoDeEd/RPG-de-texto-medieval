@@ -147,9 +147,45 @@ def tumba(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion]) -
     pass
 
 def cidade(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion]) -> None:
+
+    print('''Horas de caminhada e você finalmente alcança a cidade. Seu ponto de partida e,
+    principalmente, seu local de descanso. As casas de madeira estão mais destacadas do que
+    o de costume, no entanto.''')
+
+    #option(falar com npc ou ir para casa)
+
+    #if(falar com npc)
+        #print('''Você se aproxima do sujeito mais próximo. Um senhor de idade que parece estar 
+        #ajudando em algo. Ele comenta:''')
+        #print('''Estamos nos preparando para o festival do Sol, é estranho como o tempo passa 
+        #rápido, não acha? Eu também me peguei surpreso com os preparativos.''')
+    #else
+        #print('''Você escolheu deixar para descobrir depois. Você prefere avaliar o que 
+        #encontrou e anotar as descobertas''')
+
+    print('''Você entra em uma estalagem de longa data. O taverneiro te cumprimenta com discrição 
+    enquanto serve alguns clientes. Seu quarto está da mesma maneira de sempre, e você parte
+    para fazer seus comentários sobre sua pequena aventura... até se lembrar do cristal.
+    Você se recorda de um apreciador de joias local, um estudioso, acima de tudo. Ele talvez possa 
+    te elucidar um pouco.''')
+
+    #option(ir agora ou mais tarde)
+    #if(ir agora)
+        #print('''Quanto mais cedo você cuidar disso, mais rápido ira sanar sua curiosidade''')
+        #else
+            #print('''O apreciador de joias não ira desaparecer se você não for imediatamente''')
+
+    print('''Caminhando por entre as ruas da cidade, você se mais pesado do que o comum. Ainda não é tarde
+    o bastante para anoitecer, mas está mais frio do que o de costume por ali. Olhando para o céu, você 
+    diversas aves voando ao sul, como se estivessem migrando.''')
+
+    
+
+
     pass
 
 def estrada(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion]) -> None:
+
     pass
 
 def casaBruxa(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion]) -> None:
