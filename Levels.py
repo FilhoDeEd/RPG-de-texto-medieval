@@ -175,18 +175,49 @@ def cidade(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion]) 
         #else
             #print('''O apreciador de joias não ira desaparecer se você não for imediatamente''')
 
-    print('''Caminhando por entre as ruas da cidade, você se mais pesado do que o comum. Ainda não é tarde
-    o bastante para anoitecer, mas está mais frio do que o de costume por ali. Olhando para o céu, você 
-    diversas aves voando ao sul, como se estivessem migrando.''')
+    print('''Caminhando por entre as ruas da cidade, você se sente mais pesado do que o comum. Ainda não 
+    é tarde o bastante para anoitecer, mas está mais frio do que o de costume por ali. Olhando para o céu, 
+    você diversas aves voando ao sul, como se estivessem migrando. Mais uma coincidência.''')
+   
+    print('''Você chega ao apreciador de joias e sua humilde loja. Uma vitrine apresenta algumas belas
+    joias para possíveis, compradores, e por dentro você vê alguns outros itens de colecionador, como relógios
+    caros e derivados''')
 
-    
+    print('''Você apresenta o cristal de fogo ao senhor, e ele fica estupefato. Após alguns segundos de apreciação,
+    ele pede sua licença e vai para o quarto dos fundos. Você espera calmamente, mas ele se demora demais, e 
+    sua impaciência vem a tona. Mas não era de se esperar a vista que encontrara: enquanto se aproxima, sentindo
+    um frio inexplicável, você vê uma estátua de gelo no lugar do senhor que lhe atendera.''')
+
+    #option(inspecionar a estátua ou chamar por ajuda)
+
+    #if(inspecionar)
+        #print('''Observando cuidadosamente a estátua de gelo, você se atreve a dizer que o próprio senhor
+        # tornou-se uno com o gelo que o envolve. Isso está fora da sua alçada, e você não consegue pensar em
+        # nada para ajudá-lo. Você também encontra um mapa levando a uma cabana fora da cidade, não tão longe 
+        # da tumba que havia encontrado mais cedo.''')  
+    #else
+        #print('''Antes de sair da joalheria, você encontra um mapa para uma cabana próxima,
+        # jogado numa mesa próxima ao senhor congelado. Você corre para fora da joalheria, 
+        # clamando pelos guardas mais próximos. As próximas horas são totalmente voltadas para 
+        # o acontecimento.''')   
+
+    print('''Você sabe que os guardas vão acobertar a situação até que o festival tenha terminado. Depois de 
+    explicar tudo o que você sabia, eles deixam você voltar para a taverna. Nenhum de vocês tem ideia de como
+    aquilo aconteceu, mas já não está em suas mãos... ou talvez esteja, considerando o cristal que você
+    escondeu de seus relatos.''')
+
+    print('''Você retorna para a taverna com a mente matutando novas ideias. Nenhuma criatura que fosse capaz
+    de tal coisa vem a mente. Feitiçaria é muito barulhenta e as coisas aconteceram sem que você percebesse
+    até ser tarde demais. Ainda se indagando sobre o novo mistério, você nem nota cair no sono.''')
+
+    print('''Você acorda diversas vezes durante a noite. Várias vezes você olha pela janela para ver a lua brilhando
+    plenamente. Até que não havia mais lua. Você acorda uma última vez, completamente descansado mas ainda na 
+    escuridão da noite. Não há ninguém nas ruas, mas as luzes estão acessas. Você ainda não sabia disso,
+    mas nos próximos dias todos perceberiam: o Sol não estava mais nascendo.''')
 
 
     pass
 
-def estrada(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion]) -> None:
-
-    pass
 
 def casaBruxa(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion]) -> None:
     pass
@@ -197,5 +228,5 @@ def deserto(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion])
 def ultimaCidade(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion]) -> None:
     pass
 
-levels = [floresta, tumba, cidade, estrada, casaBruxa, deserto, ultimaCidade]
+levels = [floresta, tumba, cidade, casaBruxa, deserto, ultimaCidade]
 
