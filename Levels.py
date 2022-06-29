@@ -220,6 +220,40 @@ def cidade(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion]) 
 
 
 def casaBruxa(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion]) -> None:
+
+    print('''Dias pós dia, o Sol continuou não aparecendo. Os dias ficavam mais gelados a cada hora. A única coisa
+    que não perdia calor era o cristal que você guarda consigo. Sua única pista era a cabana na floresta, então
+    é para lá que você vai.''')
+
+    print('''Você anda apenas com uma tocha em mãos. A Lua ainda não estava presente para iluminar o caminho.
+    As folhas são as únicas coisas que fazem som além das suas pegadas enquanto os ventos te forçam a se lembrar
+    das condições dos novos tempos.''')
+
+    print('''Quando você sentia estar completamente sozinho, você escuta arbustos se agitando por perto. 
+    Você olha para a direção dos sons, e uma fera de pelos brancos aparece, avançando em sua direção.''')
+
+    #combat
+        #if(player hp == 0)
+            #print("fim de jogo")
+        #else
+            #print('''O animal te parece um lobo das neves, um dos maiores que você poderia ver. Mas o que ele 
+            # faz ali é a maior dúvida. No inverno, claramente haveria neve, mas seu lar não é uma terra gelada
+            # para servir de habitat para uma espécie como aquela.''')
+
+    print('''Você abandona o animal caído e continua seu caminho até encontrar a cabana mostrada em seu mapa. 
+    É uma casa humilde de madeira. Você sente o cheiro de algo sendo preparado do lado de dentro. Você bate
+    a porta, e uma mulher com por volta dos seus 30 anos o atende.''')
+
+    print('''Você explica a situação para mulher, que se apresentou como Aurélia, e ela admite ter das 
+    mesmas preocupações. Você deixa de comentar sobre o cristal por não saber se pode confiar nela. 
+    Sua conversa então chega ao ponto principal: ela tem uma ideia de por onde começar a resolver o problema
+    da falta de Sol, e te convida para se juntar a ela. Você concorda por não ter outra escolha, mas promete
+    a si mesmo tomar cuidado.''')
+
+    print('''Aurelia então prepara algumas coisas, e quando você se dá conta, ela te coloca um colar dourado com
+    forma de Sol. Você fecha seus olhos por instantes, e se vÊ numa paisagem que nunca antes havia visto: um
+    deserto.''')
+
     pass
 
 def deserto(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion]) -> None:
