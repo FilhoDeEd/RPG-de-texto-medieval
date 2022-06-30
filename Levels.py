@@ -249,11 +249,50 @@ def casaBruxa(player: Player) -> None:
 
     print('''Aurelia então prepara algumas coisas, e quando você se dá conta, ela te coloca um colar dourado com
     forma de Sol. Você fecha seus olhos por instantes, e se vÊ numa paisagem que nunca antes havia visto: um
-    deserto.''')
+    deserto congelante.''')
 
     return -1
 
 def deserto(player: Player) -> None:
+
+    print('''Aurelia se diverte com seu susto enquanto te passa algumas roupas compridas para te proteger do frio.
+    Ela pede perdão pela mudança repentina de cenário, mas afirma estar com certa pressa para encontrar uma pessoa.
+    Ela também te pede para lidar com um encontro inesperado, apontando para o horizonte. Você demora alguns segundos
+    para notar, mas seus olhos se acostumam e você vê um escorpião gigante indo até vocês.''')
+
+    #combat
+
+    print('''Lutar num deserto já é uma coisa que poucos gostariam de fazer, mas você prefere mais o calor
+    da batalha do que congelar ali mesmo. 
+    Aurelia agradece pelos seus esforços e garante que ira te guiar por caminhos mais seguros dali para frente.
+    Você está um pouco mais desconfiado, mas tem certeza que poderá lidar com algum problema futuro se ela for a
+    causa.''')
+
+    print('''Vocês dois caminham pelo que parecem dias. Você até já aprendeu a olhar o tempo pelo movimento da lua.
+    Aurelia comenta que é uma praticante de magia há vários anos, mas que a falta do Sol vem prejudicando seus 
+    dons. Trazer vocês e voltar para casa são as duas últimas coisas que ela tem certeza de ser capaz.''')
+
+    print('''Tempos depois, vocês param em um pequeno oasis quase que congelado. O topo das árvores já está ficando 
+    coberto por gelo, e a água parece estar a minutos de congelar por completo. Do outro lado do pequeno lago, você 
+    nota uma figura e um camelo caídos. Aurelia é a primeira a ir até lá. Vocês resgatam uma andarilha que se perdeu
+    no deserto, e que perdeu seu camelo para o cansaço.''')
+
+    print('''A moça se apresenta como Tamara. Já estava viajando no deserto há mais de dez dias, procurando por
+    qualquer novo traço de civilização que pudesse encontrar, e trazer novos contatos ao seu povo. Tudo se complicou
+    com o frio dos últimos dias, e agora ela havia perdido seu camelo.''')
+
+    print('''Aurelia não parecia tentada a deixar a jovem moça para trás, e a convidou para acompanhar vocês. 
+    Tamara, a primeira vista, não desejava atrapalhar seus assuntos, mas preferiu não continuar sozinha.''')
+
+    #option (apenas continuar ou observar)
+        #if(observar)
+            #print('''''')
+        #else
+        #break
+
+    print('''Vocês três continuam sua viagem até encontrarem algumas ruínas. Algumas são semelhantes aos da tumba, mas 
+    outros te são desconhecidos. No centro de tudo, uma pequena tenda ''')
+
     pass
 
 def ultimaCidade(player: Player) -> None:
