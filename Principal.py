@@ -15,7 +15,7 @@ player.vidaAtual -= 10
 
 player.status()
 
-pocaoCura.efeitos[0](player)
+player.consumir(pocaoCura)
 
 player.status()
 

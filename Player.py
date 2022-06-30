@@ -52,8 +52,7 @@ class Player:
                     slotsLivres.append(i)
             
             if slotsLivres.__len__ == 0:
-                print("*Cinto Cheio*")
-                #Faça um método para lidar com isso (pergunte se é pra largar o item, colocar na mochila ou usar já)
+                self@Player.cintoCheio(item)
                 return
             
             randSlot = rand.choice(slotsLivres)
@@ -63,10 +62,7 @@ class Player:
             self.qtdItensSlots[randSlot] += 1
 
         def retirarItem(self):
-            pass
-
-        def cintoCheio(self):
-            pass
+            pass         
 
     def __init__(self, nome: str, classe_ID: int) -> None:
 
@@ -85,6 +81,10 @@ class Player:
         #Mochila e Cinto:
         self.mochila = self.Mochila()
         self.cinto = self.Cinto()
+
+        #Combate:
+        self.alvo: Inimigo = None
+        self.morto = False
 
     #Visão geral sobre o personagem
     def overview(self) -> None:
@@ -113,3 +113,52 @@ class Player:
 
         #Dano
         print("Vida Atual: {}/{}".format(self.vidaAtual,self.vidaMaxima))
+
+    #Utilizar um consumível
+    def consumir(self, item: (Arma | Potion)) -> None:
+
+        if type(item) == Potion:
+            for efeito in item.efeitos:
+                efeito(self@Player)
+            return
+        
+        if type(item) == Arma:
+            pass
+    
+    #Iniciar combate contra um inimigo
+    def combate(self, alvo: Inimigo) -> None:
+        
+        self.alvo = alvo
+
+    #É pra largar o item, colocar na mochila ou, caso consumível, usar já?
+    def cintoCheio(self, item: (Arma | Potion)):
+
+        print("*Cinto Cheio*")
+
+        escolhasValidas = [1,2]
+        valido = False
+
+        print("O que fazer com o item?")
+        print("Largar (1)")
+        print("Guardar na mochila (2)")
+        if item.isConsumivel:
+            print("Consumir agora (3)")
+            escolhasValidas.append(3)
+        
+        while not valido:
+
+            escolha = int(input(": "))
+
+            if escolha not in escolhasValidas:
+                valido = False
+                print("Não há essa opção")
+            else: valido = True
+            
+        if escolha == 1:
+           return
+
+        if escolha == 2:
+            self.mochila.guardar(item)
+        
+        if escolha == 3:
+            self.consumir(item)
