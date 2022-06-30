@@ -10,13 +10,10 @@ escolhas = interface()
 #Lore
 
 player = Player(escolhas[0],escolhas[1])
+gameOver = False
+lvl = 0
 
-player.vidaAtual -= 10
-
-player.status()
-
-player.consumir(pocaoCura)
-
-player.status()
+while not gameOver:
+    levelCode = levels[lvl](player, levelsGameObjects[lvl][1], levelsGameObjects[lvl][2])
 
 print(dado(6,10,True))

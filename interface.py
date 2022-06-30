@@ -1,5 +1,5 @@
-from GerenTerm import clear,pause
-from Dictios import classes
+from GerenTerm import clear, pause
+from GameObjects import classes
 
 def interface():
 
@@ -24,6 +24,7 @@ def interface():
         print("  INT: {}  CHA: {}\n".format(classes[i][1][4],classes[i][1][5]))
 
         print("Equipamentos iniciais: ")
+        #Adicionar o .nome em cada um quando fizer a troca de string -> Arma lá no GameObject
         print("  " + classes[i][2][0])
         print("  " + classes[i][2][1])
         print("  " + classes[i][2][2])

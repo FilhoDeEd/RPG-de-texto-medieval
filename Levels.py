@@ -1,7 +1,6 @@
 from GameObjects import *
-  
-    
-def floresta(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion]) -> None:
+
+def floresta(player: Player) -> None:
 
     print('''Você se encontra a alguns metros da estrada principal. 
     Ao seu redor, apenas o som de um riacho distante,
@@ -59,10 +58,10 @@ def floresta(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion]
     pela erosão de pequenos corregos abaixo de seus pés, até encontrar o que tem certeza 
     de ser seu objetivo: iluminada por alguns raios de Sol que atravessam fissuras do teto pedregoso, 
     uma tumba perdida.''')
-    pass
 
+    return 0
 
-def tumba(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion]) -> None:
+def tumba(player: Player) -> None:
     
     print('''Você se impressiona com a vista a frente. Mesmo que tenha duvidado um pouco,
     você chegou. A trilha de pedra, coberta por anos de vegetação, te guia diretamente 
@@ -141,12 +140,12 @@ def tumba(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion]) -
     abandonar a tumba. Olhando ao redor, você segue na direção de onde acredita que 
     o esqueleto veio, e encontra uma passagem antes secreta que sai ao topo da tumba.
     Com seu prêmio em mãos, você deixa aquele pedaço de história para trás''')
-        
+
     #option(cidade ou estrada)
 
-    pass
+    return 0
 
-def cidade(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion]) -> None:
+def cidade(player: Player) -> None:
 
     print('''Horas de caminhada e você finalmente alcança a cidade. Seu ponto de partida e,
     principalmente, seu local de descanso. As casas de madeira estão mais destacadas do que
@@ -215,11 +214,9 @@ def cidade(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion]) 
     escuridão da noite. Não há ninguém nas ruas, mas as luzes estão acessas. Você ainda não sabia disso,
     mas nos próximos dias todos perceberiam: o Sol não estava mais nascendo.''')
 
+    return 0
 
-    pass
-
-
-def casaBruxa(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion]) -> None:
+def casaBruxa(player: Player) -> None:
 
     print('''Dias pós dia, o Sol continuou não aparecendo. Os dias ficavam mais gelados a cada hora. A única coisa
     que não perdia calor era o cristal que você guarda consigo. Sua única pista era a cabana na floresta, então
@@ -254,12 +251,12 @@ def casaBruxa(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion
     forma de Sol. Você fecha seus olhos por instantes, e se vÊ numa paisagem que nunca antes havia visto: um
     deserto.''')
 
+    return -1
+
+def deserto(player: Player) -> None:
     pass
 
-def deserto(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion]) -> None:
-    pass
-
-def ultimaCidade(player: Player, inimigos: list[Inimigo], itens: list[Arma | Potion]) -> None:
+def ultimaCidade(player: Player) -> None:
     pass
 
 levels = [floresta, tumba, cidade, casaBruxa, deserto, ultimaCidade]

@@ -1,6 +1,6 @@
 import random as rand
 from GerenTerm import clear,pause
-from Dictios import classes
+from GameObjects import classes
 from Potion import Potion
 from Arma import Arma
 from Inimigo import Inimigo
