@@ -394,21 +394,97 @@ def deserto(player: Player) -> None:
 
         print('''O deserto era completamente de neve agora. A tenda havia desaparecido por completo. Algo assim não deveria acontecer tão rápido, 
         e você dúvida que Cerulea se deu o trabalho de deixar o ambiente daquela forma. Isso te faz se perguntar quanto tempo esteve na forma de 
-        estátua."Mais de vinte dias", diz um recém desperto Sandman.''')
+        estátua."Mais de vinte dias", diz um recém desperto Sandman, "em minha ausência, Cerulea congelou as próprias estrelas no lugar, nem mesmo
+        a Luz pode abandonar seu lugar de quando fomos congelados. Sim, criança, ela congelou o próprio tempo."''')
 
         print('''"Eu sou aquele chamado de Senhor das Areias do Tempo, e sei o que está se perguntando agora, então irei direto ao assunto, minha 
-        criança: Eonhad, o Verão e seu Sol, os abandonou, decepcionado por sua mortalidade falha. Mas você pode ajudar a trazê-lo de volta. 
-        "''')
-
-
-    
-
+        criança: Eonhad, o Verão e seu Sol, os abandonou, decepcionado por sua mortalidade falha. Mas você pode ajudar a trazê-lo de volta. Ajude
+        a última cidade a perdurar, e ele se arrependerá por sua ausência. Entendo o que está pensando, mas antes tarde do que nunca, é o que vocês
+        dizem. Uma última coisa para guardar na memória: a pessoa certa no lugar errado por fazer toda a diferença do mundo. A humanidade agradece
+        seus esforços,"''' (+player.nome))
+   
     return 1
 
 
 
 def ultimaCidade(player: Player) -> int:
-    
+
+    print('''As areais cobertas por neve se erguem e te cobrem. Você se sente sendo levado com o próprio vento''')
+
+    print('''Você sente pousar. As areias somem aos poucos, e te é revelado a presença de algumas figuras conhecidas: Aurelia, cara-a-cara
+    com uma nova pessoa, e Cerulea, tomando a frente de um gigante exército de animais de neve.''')
+
+    print('''"Então, no final de contas, o cristal pode te salvar", diz Cerulea quase com um olhar entediado. Aurelia se aproxima sem tirar os 
+    olhos do homem que a encara de volta.''')
+
+    print('''"Não temos tempo para explicações, eu preciso de tempo para me recuperar antes que os animais percam a paciência e avancem por si só".
+    Terminando suas palavras, Aurelia coloca umas das mãos no seu ombro, e você se sente revitalizado enquanto ela toma a retagurda. "Por favor, 
+    apenas segure Outono, ele pensa que está lutando para me salvar, mas há outras formas para isso."''')
+
+    print('''"Não o conheço, mortal, mas peço para que desista da resistência", diz-lhe o sujeito, mas você não recua. "Eu, ao menos, tentei."''')
+
+    #combat
+
+    print('''Foi a coisa mais inesperada que você teve que fazer. Batalhar com Outono sem o suporte inicial de Aurelia seria impossível, mas mesmo
+    que você ainda esteja de pé, reconhece que ele está na vantagem.''')
+
+    print('''"Eu realmente sinto muito", fala Outono com pesar.''')
+
+    print('''"Bela demonstração de vontade, mortal, mas é apenas isso o que você pode fazer", diz Cerulea, mesmo a distância sua voz é clara como 
+    cristal."Todos que sobreviverem saberão que lutou com honra, ao invés de se acovardar, mesmo que no final tenha sido derrotado."''')
+
+    print('''Você olha para ela, seus olhos nem ao menos se cruzam. Mesmo que ela diga tais palavras, Cerulea não se importa com sua presença. Você 
+    diria até que ela está sendo misericordiosa, até certo ponto. Mas você a deixa sabendo de que você só precisava de tempo.''')
+
+    print('''Dessa vez, ela te olhou nos olhos. Mas antes que dissesse qualquer coisa, Aurelia te puxa para perto, e você sente mais da energia
+    que te colocou em condições de combate. "Proteja os olhos", diz ela sem mais explicações. Você o faz.''')
+
+    print('''Pelo canto dos olhos, você vê o impossível: as estrelas e a própria lua começam a se mover, ao ponto de até mesmo cortarem os céus
+    como cometas. O brilho cresce até ser quase cegante, mas o mais impressinante é o que veio a seguir.''')
+
+    print('''Um brilho no horizonte, dourado como ouro, começa a subir, aquecendo você pelas costas. Depois de muitos dias, o farol de sua vida 
+    começa a retornar. Mais uma vez, a luz do dia começava a nascer. A posição do Sol, recém-nascido, declarava as dez horas da manhã como se fosse
+    a primeira vez desde o começo dos tempos. Seus olhos se acostumam com a claridade aos poucos, e uma mão pousa em seu ombro.''')
+
+    print('''"Me perdoe por deixa-los passarem por tudo isso, eu retornei para tomar responsabilidade pelo meu erro", diz-lhe um sujeito de cabelos 
+    dourados, deixando o seu lado e passando por Outono com um olhar amigável, mas entristecido.''')
+
+    print('''"Por que agora, Eonhad?", indagou Cerulea, "O mundo está quase acabando, muitos se perderam, e somente agora você decide tomar uma atitude?"
+    "Eu demorei demais, eu sei. Mas ficar parado não seria melhor", responde Verão. "Vou carregar comigo o peso das vidas que você congelou, mas o 
+    farei sem pensar duas vezes, ao invés de deixar está última cidade ser congelada."''')
+
+    print('''Você observa Eonhad levantar uma das mãos, e sente Aurelia cobrindo seus olhos. Mesmo não vendo, você sente o calor do Sol, mais forte e 
+    focado, aquecendo seus arredores até que a neve sob seus pés derreta. Você abre seus olhos novamente, e vê que praticamente todo o exército de 
+    Cerulea havia sido derretido, deixando a sozinha na linha de frente. É impressionante a falta de expressão que ela tem, mas é ainda mais 
+    surpreendente como ela não tira os olhos de Verão. ''')
+
+    print('''"A partir deste dia, eu declaro que esta guerra acabou.", diz Eonhad, em alto e bom som, "Uma vez mais, os mortais estão sob minha proteção."''')
+
+    print('''"Eles te afastaram uma vez por conta da escuridão de sua existência, por não apreciarem o dom da vida que você e Privamera garantiam. 
+    Matando e roubando seus iguais, quebrando o trabalho da própria Mãe Natureza por sua ganância e sua.... filosofia dos mortais como o centro de 
+    tudo. Como você garante que isso não ocorrerá de novo?"''')
+
+    print('''"Eu não posso, mas se a vida fosse algo a ser controlado, não seria entregue a eles, de um jeito ou de outro. Você pode não concordar com isso,
+    mas essa é a forma que as coisas serão."''')
+
+    print('''"Então, isso é apenas um atraso do inevitável. Eu irei recuar, por hora. Mas tenha isso em mente, Eonhad, o dia chegará em que você
+    não será suficiente para impedir minhas conquistas, e você próprio não estará fora do alcance delas". E simplesmente assim, Cerulea desaparece com 
+    uma leve brisa gelada, deixando apenas o calor do Sol restar naquele lugar.''')
+
+    print('''As palavras de Sandman se provaram verdadeiras, mas Cerulea estava certa, muitos foram perdidos. Vocês sabem apenas da condição da cidade que
+    estão protegendo. Só o tempo dirá se outros povos também resistiram. Sobreviver não se baseia na vitória, e você tem certeza de não se esquecerdisso. 
+    Pelo menos, pela primeira vez, os próprios senhores do mundo estão do seu lado.''')
+
+    print('''O cristal de fogo ficou sob os cuidados de Aurelia. Outono, agora que Aurelia, que você descobre ser sua esposa, está a salvo, se manteve ao 
+    lado dela e de Eonhad. Por vezes, Sandman atende as suas dúvidas enquanto você passou a viver para ajudar a reconstruir o mundo, mesmo que eles não 
+    saibam que fora você uma das pessoas que ajudou a salvar o mundo. Ser a pessoa certa no lugar errado fez a diferença no mundo, mas não te fez ser
+    conhecido por ele.''')
+
+    print('''Todos os dias, sempre que você sente frio, você pensa nas palavras de Cerulea. Não há como saber se vocês se reencontrarão nessa vida. Mas você
+    a teme mesmo assim. Isso te dá forças para continuar, ironicamente, pelo menos tentar o máximo possível para ajudar a atrasar o dia da promessa dela.''')
+
+    print('''Fim de jogo. Final Verdadeiro.''')
+
     return 1
 
 levels = [floresta, tumba, cidade, casaBruxa, deserto, ultimaCidade]
