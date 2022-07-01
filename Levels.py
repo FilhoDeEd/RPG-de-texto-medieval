@@ -261,7 +261,7 @@ def casaBruxa(player: Player) -> int:
     forma de Sol. Você fecha seus olhos por instantes, e se vÊ numa paisagem que nunca antes havia visto: um
     deserto congelante.''')
 
-    return -1
+    return 1
 
 def deserto(player: Player) -> None:
 
@@ -368,13 +368,44 @@ def deserto(player: Player) -> None:
         print('''Final ruim''')
                 
     else:
-        print
-    
-    pass
+        print('''Mesmo sabendo que suas chances são quase nulas, você se nega a entregar o cristal a ela, o que claramente
+        a irrita.''')
 
-def deserto(player: Player) -> int:
+        print('''"Então, que você se junte ao apreciador de joias, mortal". Assim que essas palavras terminam, você vê Aurelia sendo
+        tomada por gelo, e sente seu corpo gelando rapidamente enquanto Cerulea desaparece de sua visão.''')
+
+
+
+        print('''Algo começa a esquentar você. Aos poucos, você recobra a consciência. Seu corpo molhado com o gelo derretido cai em neve.
+        Você olha ao redor e tudo está congelado. Não há sinal de Aurelia, mas a estátua de Sandman continua aonde você se recorda.''')
+
+        print('''Você cambalheia em direção a ele, e procura qualquer coisa que te seja um sinal de esperança para escapar daquela 
+        situação, mas dificilmente alguém ou algo apareceria para prestar socorro. Você então volta sua atenção para o calor em suas costas.''')
+
+        print('''Você retira o cristal de fogo, brilhando como brasa mas não queimando ao toque. Seu primeiro instinto é tentar descongelar 
+        Sandman, e assim você o tenta.''')
+
+        print('''Sua noção de tempo está defasada. A tarefa parece demorar horas para ter algum progresso. Mas você consegue descongelar o 
+        senhor insconsciente.''')
+
+        print('''Você garante que ele esteja aquecido, ao mesmo tempo que se pergunta se ele era como Cerulea e, provavelmente, Aurelia. Se for
+        o caso, nem tudo estará perdido, ou assim sua expectativa espera. E falando sobre esperar, você se dá o luxo de observar mais atentamente
+        os arredores.''')
+
+        print('''O deserto era completamente de neve agora. A tenda havia desaparecido por completo. Algo assim não deveria acontecer tão rápido, 
+        e você dúvida que Cerulea se deu o trabalho de deixar o ambiente daquela forma. Isso te faz se perguntar quanto tempo esteve na forma de 
+        estátua."Mais de vinte dias", diz um recém desperto Sandman.''')
+
+        print('''"Eu sou aquele chamado de Senhor das Areias do Tempo, e sei o que está se perguntando agora, então irei direto ao assunto, minha 
+        criança: Eonhad, o Verão e seu Sol, os abandonou, decepcionado por sua mortalidade falha. Mas você pode ajudar a trazê-lo de volta. 
+        "''')
+
+
     
+
     return 1
+
+
 
 def ultimaCidade(player: Player) -> int:
     
