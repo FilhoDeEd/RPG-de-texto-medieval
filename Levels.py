@@ -1,3 +1,4 @@
+from signal import pause
 from GameObjects import *
 
 def floresta(player: Player) -> None:
@@ -290,9 +291,76 @@ def deserto(player: Player) -> None:
         #else
         #break
 
-    print('''Vocês três continuam sua viagem até encontrarem algumas ruínas. Algumas são semelhantes aos da tumba, mas 
-    outros te são desconhecidos. No centro de tudo, uma pequena tenda ''')
+    print('''Vocês três continuam sua viagem até encontrarem algumas ruínas com diversos desenhos e rostos. Algumas 
+    são semelhantes aos da tumba, mas outros te são desconhecidos. No centro de tudo, uma pequena tenda iluminada por 
+    uma fogueira, e uma nova figura sentada, olhando para algumas ruínas mais conservadas.''')
 
+    print('''O homem se levanta como se soubesse que vocês haviam chegado. É um senhor em volta de seus 40 anos, 
+    vestido como quem está acostumado a viver no calor do deserto. Aurelia pede para que você e Tamara a esperem, e 
+    vai ao encontro do sujeito.''')
+
+    print('''Tamara se senta num pedaço de construção caído ao chão, olhando atentamente para os dois afastados.
+    De pouco a pouco, você começa a se sentir incomodado com a presença dela, sentindo ímpeto em se afastar.
+    Você olha uma última vez em direção a Aurélia, e nota um olha desesperançoso. Ela olha em direção a vocês, e
+    esse olhar muda para uma surpresa desagradável.''')
+    
+    print('''Você ouve uma voz forte do lugar de onde Tamara estava, e fica paralisado no lugar onde está: 
+    "Isso é ridículo". A dona de tal voz era de uma jovem mulher branca como a neve em um vestido azul gelo. 
+    Seu andar fazia seu corpo tremer. Por longos momentos, você não conseguiu tomar quaisquer atitudes.''')
+
+    print('''Aurelia se colocou frente a frente da nova figura, mas tinha em seu olhar poucas expectativas de fazer
+    qualquer coisa. "Mova-se, Primavera", disse a mulher albina, "meus assuntos envolvem Sandman, e apenas ele".''')
+
+    print('''"Com que direito você tenta me dar ordens, Cerulea?", indaga Aurelia, mas o senhor nomeado Sandmand lhe
+    deu um leve toque no ombro para encarar ele mesmo a mulher albina. "Faça o que acha que deve fazer, criança."''')
+
+    print('''Foi num piscar de olhos, mas você viu o resultado do que aconteceu com o apreciador de joias uma 
+    segunda vez. No lugar daquele senhor, uma estátua de gelo se formou. Você prepara sua arma para se defender, e 
+    tem certeza de que Aurelia, ao menos, lutaria ao seu lado.''')
+
+    print('''"Eu lhe dei a chance que preciava para não tentar mexer com o que não devia, mortal. O velho das joias
+    devia ter sido aviso o suficiente. Mas estou com um pouco de clemência sobrando para o dia de hoje. Dê-me o cristal
+    de fogo que carrega, e não precisará compartilhar do mesmo destino que os outros."''')
+
+    print('''Você volta da paralisia temporária do frio, se perguntando como havia chegado numa situação como essa, e 
+    se entreolha com Aurelia, e ela te devolve um olhar confuso. Você volta a olhar para Cerulea e nota: o rosto 
+    dela estava em vários dos desenhos das ruínas. Ela foi chamada de Primavera, e a mulher albina era fria como gelo,
+    estaria você diante das personificações das estações?''')
+
+    opção = input("Entregar o cristal?(S/N")
+
+    if(opção=='S'):
+        print('''Você teme por sua vida agora que a paranoia toma conta dos seus pensamentos. As simples ideias do que
+        essa mulher possa ser é o suficiente para fazer suas pernas vacilarem. Você retira o cristal de fogo de sua 
+        mochila, e o apresenta a Cerulea. ''')
+        
+        pause
+
+        print('''Aurelia demonstra que irá fazer algo, mas metade de seu corpo é revestido por gelo em questão de
+        segundos. Isso confirma que você nunca teve uma chance.''')
+
+
+
+        print('''Cerulea toma o cristal de você, e o olha como um achado raro, até parecendo se esquecer de você por 
+        alguns instantes. Você preferia que ela realmente tivesse te esquecido. O frio ao seu redor aumenta de maneira
+        assustadora. Seu corpo começa a congelar dos pés até a cabeça.''')
+
+
+
+        print('''"Você merece ao menos entender o que é isso", diz Cerulea sem te olhar nos olhos, "eu bem disse que seu
+        destino não seria o mesmo dos outros, mas nunca disse que seria misericordioso, ou que seria até mesmo poupado". 
+        Ela passa ao seu lado, começando a ir embora das ruínas. "Um traidor não merece minha clemência, mas ser feito
+        como um exemplo para ser esquecido? Isso eu lhe concedo, mortal".''')
+
+        print('''O gelo lentamente toma conta. Você sente seu interior gelando por inteiro, e fecha seus olhos para seu fim.
+        Aos poucos, você para de pensar.''')
+
+
+        print('''Final ruim''')
+                
+    else:
+        print
+    
     pass
 
 def ultimaCidade(player: Player) -> None:
