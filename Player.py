@@ -1,6 +1,5 @@
 import random as rand
-from GerenTerm import clear,pause
-from GameObjects import classes
+from GerenTerm import pause
 from Potion import Potion
 from Arma import Arma
 from Inimigo import Inimigo
@@ -61,26 +60,36 @@ class Player:
             self.cargaAtualSlot[randSlot] += item.peso
             self.qtdItensSlots[randSlot] += 1
 
+        #Se retirar poção, 
         def retirarItem(self):
             pass         
 
-    def __init__(self, nome: str, classe_ID: int) -> None:
+    def __init__(self, nome: str, classe: str, atributos: list[int], equipamentos: list[str]) -> None:
 
         #Informações básicas:
         self.nome = nome
-        self.classe = classes[classe_ID][0]
-        self.atributos = classes[classe_ID][1]
-        self.equipamentos = classes[classe_ID][2]
+        self.classe = classe
+        self.atributos = {
+            "STR":atributos[0],
+            "DEX":atributos[1],
+            "CON":atributos[2],
+            "WIS":atributos[3],
+            "INT":atributos[4],
+            "CHA":atributos[5]
+        }
+        self.equipamentos = equipamentos
 
         #Vida:
-        if classe_ID == 0: self.vidaMaxima = 36
-        elif classe_ID == 1 or classe_ID == 2: self.vidaMaxima = 30
+        if classe == "Bárbaro": self.vidaMaxima = 36
+        elif classe == "Soldado" or classe == "Patrulheiro": self.vidaMaxima = 30
         else: self.vidaMaxima = 24
         self.vidaAtual = self.vidaMaxima
 
-        #Mochila e Cinto:
+        #Mochila, Cinto, Mão:
         self.mochila = self.Mochila()
         self.cinto = self.Cinto()
+        self.armaPrincipal: Arma = None
+        self.mao: (Arma | Potion) = None
 
         #Combate:
         self.alvo: Inimigo = None
@@ -88,25 +97,20 @@ class Player:
 
     #Visão geral sobre o personagem
     def overview(self) -> None:
-        
-        clear()
 
         print("Nome: {}\n".format(self.nome))
 
         print("Classe: {}\n".format(self.classe))
 
         print("Atributos: ")
-        print("  STR: {}  DEX: {}".format(self.atributos[0],self.atributos[1]))
-        print("  CON: {}  WIS: {}".format(self.atributos[2],self.atributos[3]))
-        print("  INT: {}  CHA: {}\n".format(self.atributos[4],self.atributos[5]))
+        print("  STR: {}  DEX: {}".format(self.atributos["STR"],self.atributos["DEX"]))
+        print("  CON: {}  WIS: {}".format(self.atributos["CON"],self.atributos["WIS"]))
+        print("  INT: {}  CHA: {}\n".format(self.atributos["INT"],self.atributos["CHA"]))
 
         print("Equipamentos iniciais: ")
         print("  " + self.equipamentos[0])
         print("  " + self.equipamentos[1])
         print("  " + self.equipamentos[2]+"\n")
-
-        pause()
-        clear()
 
     #Para saber como vai a vida e outros status corriqueiros
     def status(self) -> None:

@@ -1,11 +1,14 @@
 from signal import pause
 from GameObjects import *
+from GerenTerm import pause
 
-def floresta(player: Player) -> None:
+def floresta(player: Player) -> int:
 
     print('''Você se encontra a alguns metros da estrada principal. 
     Ao seu redor, apenas o som de um riacho distante,
     mas você está certo de estar no caminho correto''')
+
+    pause()
 
     #option (seguir em frente ou não)
 
@@ -34,22 +37,28 @@ def floresta(player: Player) -> None:
     A floresta começa a se tornar mais fechada, e as árvores mais retorcidas, e aos poucos,
     você se vê forçado a parar frente a uma parede de vinhas rígidas e duras como madeira''')
 
-    #option (cortar ou escalar)
+    while True:
 
-    #if(comando==cortar && player_stats[STR]>=13):
-       # print('''Apesar dessas vinhas serem verdadeiramente resistentes, 
-        #você é capaz de tirá-las do caminho''')
-    #else
-        #print('''Mesmo colocando toda a sua força na tarefa, você se convence,
-       # não há como arrancar as vinhas''')
-    
-    #if(comando==pular && player_stats[DEX]>=13):
-        #print('''Mesmo fortemente entrelaçadas, as vinhas possuem espaços
-       #suficientes para que você escale a parede com segurança''')
-    #else
-        #print('''Você consegue notar uma forma de escalar a parede, mas você cai 
-       # em todas as suas tentativas de subi-la''')
+        while True:
+            comando = input("'E' para escalar ou 'C' para cortar")
+            if comando == 'E' or 'C': break
+            print("Escolha uma opção válida")
 
+        if(comando=='C' and player.atributos["STR"]>=13):
+            print('''Apesar dessas vinhas serem verdadeiramente resistentes, 
+            você é capaz de tirá-las do caminho''')
+            break
+        else:
+            print('''Mesmo colocando toda a sua força na tarefa, você se convence,
+            não há como arrancar as vinhas''')
+        
+        if(comando=='E' and player.atributos["DEX"]>=13):
+            print('''Mesmo fortemente entrelaçadas, as vinhas possuem espaços
+            suficientes para que você escale a parede com segurança''')
+            break
+        else:
+            print('''Você consegue notar uma forma de escalar a parede, mas você cai 
+            em todas as suas tentativas de subi-la''')
 
     print ('''Com certo esforço, você se vê livre em uma nova parte da floresta, quase que
     seguindo uma trilha construída há eras. Você confirma isso alguns metros a frente, 
@@ -60,9 +69,9 @@ def floresta(player: Player) -> None:
     de ser seu objetivo: iluminada por alguns raios de Sol que atravessam fissuras do teto pedregoso, 
     uma tumba perdida.''')
 
-    return 0
+    return 1
 
-def tumba(player: Player) -> None:
+def tumba(player: Player) -> int:
     
     print('''Você se impressiona com a vista a frente. Mesmo que tenha duvidado um pouco,
     você chegou. A trilha de pedra, coberta por anos de vegetação, te guia diretamente 
@@ -144,9 +153,9 @@ def tumba(player: Player) -> None:
 
     #option(cidade ou estrada)
 
-    return 0
+    return 1
 
-def cidade(player: Player) -> None:
+def cidade(player: Player) -> int:
 
     print('''Horas de caminhada e você finalmente alcança a cidade. Seu ponto de partida e,
     principalmente, seu local de descanso. As casas de madeira estão mais destacadas do que
@@ -215,9 +224,9 @@ def cidade(player: Player) -> None:
     escuridão da noite. Não há ninguém nas ruas, mas as luzes estão acessas. Você ainda não sabia disso,
     mas nos próximos dias todos perceberiam: o Sol não estava mais nascendo.''')
 
-    return 0
+    return 1
 
-def casaBruxa(player: Player) -> None:
+def casaBruxa(player: Player) -> int:
 
     print('''Dias pós dia, o Sol continuou não aparecendo. Os dias ficavam mais gelados a cada hora. A única coisa
     que não perdia calor era o cristal que você guarda consigo. Sua única pista era a cabana na floresta, então
@@ -363,8 +372,12 @@ def deserto(player: Player) -> None:
     
     pass
 
-def ultimaCidade(player: Player) -> None:
-    pass
+def deserto(player: Player) -> int:
+    
+    return 1
+
+def ultimaCidade(player: Player) -> int:
+    
+    return 1
 
 levels = [floresta, tumba, cidade, casaBruxa, deserto, ultimaCidade]
-
