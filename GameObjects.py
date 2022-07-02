@@ -1,23 +1,9 @@
+import random as rand
 from Player import Player
 from Arma import Arma
 from Potion import Potion
 from Inimigo import Inimigo
-import random as rand
-
-#Um dado bem versátil. Você pode escolher o número de faces (por padrão é 6),
-#o número de lances (por padrão é 1) e
-#se esses os valores de cada lance devem ser somados ou não (por padrão não)
-def dado(faces: int = 6, lances: int = 1, somar: bool = False ) -> (int | list):
-
-    valores = []
-
-    for i in range(lances):
-        randNum = rand.randint(1,faces)
-        valores.append(randNum)
-    
-    if somar:
-        return sum(valores)
-    else: return valores
+from ferramentas import dado
 
 #Criar inimigos e suas skills aqui:
 
@@ -25,7 +11,7 @@ esqueleto = Inimigo("Esqueleto",4,2)
 
 #Criar armas e suas skills aqui:
 
-pedra = Arma("Pedra", True, True, 0, 1, 0)
+pedra = Arma("Pedra", True, 1, 0)
 
 #Criar poções e seus efeitos aqui:
 def curar(player: Player) -> None:
@@ -45,12 +31,14 @@ def shuffle(player: Player) -> None:
     
     print("*Embaralhar*")
 
-    rand.shuffle(player.mochila)
+    rand.shuffle(player.mochila.pilhaMochila)
 
 pocaoEmbaralhar = Potion("Embaralhar","Embaralhar os itens de sua mochila",[shuffle])
 
 #fazer uma poção que retira um item aleatório da mochila
 #É só usar random.choice()
+
+#----------------------------------------------------------------------------------------------
 
 #[<Nome>,<Atributos>,<Equipamentos>]
 #Ordem dos atributos: Força, Destreza, Constituição, Sabedoria, Inteligência, Carisma

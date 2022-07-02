@@ -1,4 +1,4 @@
-from GerenTerm import clear, pause
+from ferramentas import clear, pause
 from GameObjects import classes
 
 def interface():

@@ -1,6 +1,6 @@
-from signal import pause
 from GameObjects import *
-from GerenTerm import pause
+from Eventos import *
+from ferramentas import pause
 
 def floresta(player: Player) -> int:
 
@@ -8,7 +8,17 @@ def floresta(player: Player) -> int:
     Ao seu redor, apenas o som de um riacho distante,
     mas você está certo de estar no caminho correto''')
 
-    pause()
+    player.mochila.guardar(pedra)
+    player.mochila.guardar(pedra)
+    player.mochila.guardar(pedra)
+    player.mochila.guardar(pocaoCura)
+    player.cinto.guardar(pocaoCura)
+    player.cinto.guardar(pocaoCura)
+    player.cinto.guardar(pocaoCura)
+    player.cinto.guardar(pocaoEmbaralhar)
+    player.cinto.guardar(pedra)
+
+    andando(player)
 
     #option (seguir em frente ou não)
 
@@ -263,7 +273,7 @@ def casaBruxa(player: Player) -> int:
 
     return 1
 
-def deserto(player: Player) -> None:
+def deserto(player: Player) -> int:
 
     print('''Aurelia se diverte com seu susto enquanto te passa algumas roupas compridas para te proteger do frio.
     Ela pede perdão pela mudança repentina de cenário, mas afirma estar com certa pressa para encontrar uma pessoa.
@@ -401,11 +411,9 @@ def deserto(player: Player) -> None:
         criança: Eonhad, o Verão e seu Sol, os abandonou, decepcionado por sua mortalidade falha. Mas você pode ajudar a trazê-lo de volta. Ajude
         a última cidade a perdurar, e ele se arrependerá por sua ausência. Entendo o que está pensando, mas antes tarde do que nunca, é o que vocês
         dizem. Uma última coisa para guardar na memória: a pessoa certa no lugar errado por fazer toda a diferença do mundo. A humanidade agradece
-        seus esforços,"''' (+player.nome))
+        seus esforços,"''' + player.nome)
    
     return 1
-
-
 
 def ultimaCidade(player: Player) -> int:
 

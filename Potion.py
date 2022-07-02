@@ -8,3 +8,4 @@ class Potion:
         self.descricao = descricao
         self.peso = 1
         self.efeitos = efeitos
+        self.passouMochila = False

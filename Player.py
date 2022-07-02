@@ -1,5 +1,5 @@
 import random as rand
-from GerenTerm import pause
+from ferramentas import escolhasUser
 from Potion import Potion
 from Arma import Arma
 from Inimigo import Inimigo
@@ -12,37 +12,54 @@ class Player:
 
             #Lista que representa a mochila:
             self.pilhaMochila: list[Arma | Potion] = []
+            self.itemTopo: (Arma | Potion) = None
             self.qtdItens = 0
 
-        def guardar(self, item: (Arma | Potion)) -> None:
-        
-            self.pilhaMochila.append(item)
-            self.qtdItens += 1
+        def guardar(self, item: (Arma | Potion)) -> (Arma | Potion | None):
+            
+            if item.passouMochila:
+                print("*Esse item está amaldiçoado e não pode voltar a mochila*")
+                return item
 
-        def retirarItem(self) -> (Arma | Potion | None):
+            self.pilhaMochila.append(item)
+            self.itemTopo = item
+            self.qtdItens += 1
+            return None
+
+        def retirar(self) -> (Arma | Potion | None):
             
             if self.qtdItens == 0:
                 print("*Mochila vázia*")
-                return
+                return None
 
-            print("Item:" + self.pilhaMochila[-1].nome)
-            pause()
+            print("Item: {}".format(self.itemTopo.nome))
+            tecla = escolhasUser(["confirmar","cancelar"])
 
-            Item = self.pilhaMochila.pop()
+            if tecla == 2:
+                return None
+
+            item = self.pilhaMochila.pop()
             self.qtdItens -= 1
+            item.passouMochila = True
+            self.itemTopo = self.pilhaMochila[-1]
 
-            return Item
+            return item
+        
+        def mostrar(self) -> None:
+
+            print("Mochila:")
+            print("  {}".format(self.itemTopo.nome))
 
     class Cinto:
 
         def __init__(self) -> None:
 
-            self.cinto: list[list[Arma | Potion]] = [[],[],[],[],[]]
+            self.matrizCinto: list[list[Arma | Potion]] = [[],[],[],[],[]]
             self.capacidadeMaxSlot = 2
             self.cargaAtualSlot = [0,0,0,0,0]
             self.qtdItensSlots = [0,0,0,0,0]
         
-        def guardar(self, item: (Arma | Potion)) -> None:
+        def guardar(self, item: (Arma | Potion)) -> (Arma | Potion | None):
 
             slotsLivres = []
 
@@ -50,19 +67,41 @@ class Player:
                 if item.peso + self.cargaAtualSlot[i] <= 2:
                     slotsLivres.append(i)
             
-            if slotsLivres.__len__ == 0:
-                self@Player.cintoCheio(item)
-                return
+            if len(slotsLivres) == 0:
+                print("*Cinto cheio*")
+                return item
             
             randSlot = rand.choice(slotsLivres)
 
-            self.cinto[randSlot].append(item)
+            self.matrizCinto[randSlot].append(item)
             self.cargaAtualSlot[randSlot] += item.peso
             self.qtdItensSlots[randSlot] += 1
+            return None
+ 
+        def retirar(self) -> (Arma | Potion | None):
 
-        #Se retirar poção, 
-        def retirarItem(self):
-            pass         
+            self.mostrar()
+                    
+            nomeItemRetirar = input("Digite o nome do item: ")
+
+            for i in range(5):
+                for j in range(self.qtdItensSlots[i]):
+                    if nomeItemRetirar == self.matrizCinto[i][j].nome:
+                        item = self.matrizCinto[i].pop(j)
+                        self.cargaAtualSlot[i] -= item.peso
+                        self.qtdItensSlots[i] -= 1
+                        return item
+
+            print("*Item não encontrado*")
+            return None
+
+        def mostrar(self) -> None:
+            
+            print("Cinto:")
+            for i in range(5):
+                print("  Slot {}".format(i+1))
+                for j in range(self.qtdItensSlots[i]):
+                    print("   {}".format(self.matrizCinto[i][j].nome))     
 
     def __init__(self, nome: str, classe: str, atributos: list[int], equipamentos: list[str]) -> None:
 
@@ -95,7 +134,7 @@ class Player:
         self.alvo: Inimigo = None
         self.morto = False
 
-    #Visão geral sobre o personagem
+    #Visão geral sobre o personagem:
     def overview(self) -> None:
 
         print("Nome: {}\n".format(self.nome))
@@ -112,57 +151,16 @@ class Player:
         print("  " + self.equipamentos[1])
         print("  " + self.equipamentos[2]+"\n")
 
-    #Para saber como vai a vida e outros status corriqueiros
+    #Para saber como vai a vida e outros status corriqueiros:
     def status(self) -> None:
 
         #Dano
         print("Vida Atual: {}/{}".format(self.vidaAtual,self.vidaMaxima))
-
-    #Utilizar um consumível
-    def consumir(self, item: (Arma | Potion)) -> None:
-
-        if type(item) == Potion:
-            for efeito in item.efeitos:
-                efeito(self@Player)
-            return
-        
-        if type(item) == Arma:
-            pass
     
-    #Iniciar combate contra um inimigo
-    def combate(self, alvo: Inimigo) -> None:
-        
-        self.alvo = alvo
-
-    #É pra largar o item, colocar na mochila ou, caso consumível, usar já?
-    def cintoCheio(self, item: (Arma | Potion)):
-
-        print("*Cinto Cheio*")
-
-        escolhasValidas = [1,2]
-        valido = False
-
-        print("O que fazer com o item?")
-        print("Largar (1)")
-        print("Guardar na mochila (2)")
-        if item.isConsumivel:
-            print("Consumir agora (3)")
-            escolhasValidas.append(3)
-        
-        while not valido:
-
-            escolha = int(input(": "))
-
-            if escolha not in escolhasValidas:
-                valido = False
-                print("Não há essa opção")
-            else: valido = True
-            
-        if escolha == 1:
-           return
-
-        if escolha == 2:
-            self.mochila.guardar(item)
-        
-        if escolha == 3:
-            self.consumir(item)
+    #Calcular ataque:
+    def ataque(self):
+        pass
+    
+    #Calcular defesa:
+    def defesa(self):
+        pass
