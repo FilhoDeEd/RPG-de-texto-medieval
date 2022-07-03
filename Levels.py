@@ -36,7 +36,7 @@ def floresta(player: Player) -> int:
 
     print('''Mesmo estranhando um pouco, você continua seu caminho. Coincidência ou não, 
     você ainda tem um objetivo para seguir''')
-    
+
     print('''Quase uma hora de viagem depois, você começa a notar uma mudança no ambiente.
     A floresta começa a se tornar mais fechada, e as árvores mais retorcidas, e aos poucos,
     você se vê forçado a parar frente a uma parede de vinhas rígidas e duras como madeira''')
@@ -83,6 +83,7 @@ def tumba(player: Player) -> int:
     A primeira vista, era um lugar desolado, frio como todo o resto, e, estranhamente, se,
     armadilhas para invasores. No final do primeiro corredor, no entanto, você tem um pressentimento:
     talvez este lugar seja um labirinto.''')
+
 
     #option(observar o chão)
     #if (option=observar)
@@ -192,17 +193,20 @@ def cidade(player: Player) -> int:
 
 
     comando = input("Inspecionar a estátua ou chamar por ajuda?(I/A")
-   
-    if(comando=='I'):
-        print('''Observando cuidadosamente a estátua de gelo, você se atreve a dizer que o próprio senhor
-        # tornou-se uno com o gelo que o envolve. Isso está fora da sua alçada, e você não consegue pensar em
-        # nada para ajudá-lo. Você também encontra um mapa levando a uma cabana fora da cidade, não tão longe 
-        # da tumba que havia encontrado mais cedo.''')  
-    elif(comando=='A'):
-        print('''Antes de sair da joalheria, você encontra um mapa para uma cabana próxima,
-        # jogado numa mesa próxima ao senhor congelado. Você corre para fora da joalheria, 
-        # clamando pelos guardas mais próximos. As próximas horas são totalmente voltadas para 
-        # o acontecimento.''')   
+    
+    while(comando==False):
+        if(comando=='I'):
+            print('''Observando cuidadosamente a estátua de gelo, você se atreve a dizer que o próprio senhor
+            tornou-se uno com o gelo que o envolve. Isso está fora da sua alçada, e você não consegue pensar em
+            nada para ajudá-lo. Você também encontra um mapa levando a uma cabana fora da cidade, não tão longe 
+            da tumba que havia encontrado mais cedo.''')  
+        elif(comando=='A'):
+            print('''Antes de sair da joalheria, você encontra um mapa para uma cabana próxima,
+            jogado numa mesa próxima ao senhor congelado. Você corre para fora da joalheria, 
+            clamando pelos guardas mais próximos. As próximas horas são totalmente voltadas para 
+            o acontecimento.''')  
+        else:
+            print("Escolha uma opção válida.") 
 
     print('''Você sabe que os guardas vão acobertar a situação até que o festival tenha terminado. Depois de 
     explicar tudo o que você sabia, eles deixam você voltar para a taverna. Nenhum de vocês tem ideia de como
