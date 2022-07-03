@@ -173,7 +173,9 @@ def andando(player: Player) -> None:
 
 #Iniciar combate contra um inimigo:
 def combate(player: Player, alvo: Inimigo) -> None:
-        
+    
+    turnoPlayer =  True
+
     #Combate:
 
         #Turno Player

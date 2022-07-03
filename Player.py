@@ -1,5 +1,5 @@
 import random as rand
-from ferramentas import escolhasUser
+from ferramentas import escolhasUser, dado
 from Potion import Potion
 from Arma import Arma
 from Inimigo import Inimigo
@@ -131,7 +131,6 @@ class Player:
         self.mao: (Arma | Potion) = None
 
         #Combate:
-        self.alvo: Inimigo = None
         self.morto = False
 
     #Visão geral sobre o personagem:
@@ -161,9 +160,11 @@ class Player:
         print("Vida Atual: {}/{}".format(self.vidaAtual,self.vidaMaxima))
     
     #Calcular ataque:
-    def ataque(self):
-        pass
+    def atacar(self) -> int:
+        
+        return self.armaPrincipal.dano + dado(6)
     
     #Calcular defesa:
-    def defesa(self):
-        pass
+    def defender(self) -> int:
+        
+        return self.armaPrincipal.defesa + dado(6)
