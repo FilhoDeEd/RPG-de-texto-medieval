@@ -177,77 +177,93 @@ def combate(player: Player, alvo: Inimigo) -> None:
     turnoPlayer = True
     acaoSkill = True
 
-    if turnoPlayer:
+    while True:
 
-        acaoPotion = True
+        if turnoPlayer:
 
-        while turnoPlayer:
+            acaoPotion = True
 
-            print("*Seu turno*")
+            while turnoPlayer:
 
-            opcoes = ["atacar","utilizar uma poção","utilizar skill"]
-            if not acaoPotion:
-                opcoes.remove("utilizar uma poção")
-            if not acaoSkill:
-                opcoes.remove("utilizar skill")
+                print("*Seu turno*")
 
-            combateCommand = escolhasUser(opcoes)
+                opcoes = ["atacar","utilizar uma poção","utilizar skill"]
+                if not acaoPotion:
+                    opcoes.remove("utilizar uma poção")
+                if not acaoSkill:
+                    opcoes.remove("utilizar skill")
 
-            if not acaoPotion and acaoSkill and combateCommand == 2:
-                combateCommand = 3
+                combateCommand = escolhasUser(opcoes)
 
-            if combateCommand == 1:
+                if not acaoPotion and acaoSkill and combateCommand == 2:
+                    combateCommand = 3
 
-                danoPlayer = player.atacar()
-                defesaInimigo = alvo.defender()
-                resultado = danoPlayer - defesaInimigo
-                alvo.vidaAtual -= resultado
-                turnoPlayer = False
-            
-            elif combateCommand == 2:
+                if combateCommand == 1:
 
-                print("Cinto:")
-                for i in range(5):
-                    print("  Slot {}".format(i+1))
-                    for j in range(player.cinto.qtdItensSlots[i]):
-                        if type(player.cinto.matrizCinto[i][j]) == Potion:
-                            print("   {}".format(player.cinto.matrizCinto[i][j].nome))
+                    danoPlayer = player.atacar()
+                    defesaInimigo = alvo.defender()
+                    resultado = danoPlayer - defesaInimigo
 
-                nomePotion = input("\nDigite o nome da poção: ")
+                    print("*Você infingiu {} de dano*".format(resultado))
+                    print("Vida do {}: {}/{}".format(alvo.nome, alvo.vidaAtual, alvo.vidaMaxima))
 
-                potionBeber = None
+                    alvo.vidaAtual -= resultado
+                    turnoPlayer = False
+                
+                elif combateCommand == 2:
 
-                for i in range(5):
+                    print("Cinto:")
+                    for i in range(5):
+                        print("  Slot {}".format(i+1))
                         for j in range(player.cinto.qtdItensSlots[i]):
                             if type(player.cinto.matrizCinto[i][j]) == Potion:
-                                if nomePotion == player.cinto.matrizCinto[i][j].nome:
-                                    potionBeber = player.cinto.matrizCinto[i].pop(j)
-                                    player.cinto.cargaAtualSlot[i] -= 1
-                                    player.cinto.qtdItensSlots[i] -= 1
-                                    beberPocao(player,potionBeber)
-                                    acaoPotion = False
+                                print("   {}".format(player.cinto.matrizCinto[i][j].nome))
 
-                if potionBeber == None:
-                    print("*Poção não encontrada*")
+                    nomePotion = input("\nDigite o nome da poção: ")
 
-            elif combateCommand == 3:
-                pass
+                    potionBeber = None
 
+                    for i in range(5):
+                            for j in range(player.cinto.qtdItensSlots[i]):
+                                if type(player.cinto.matrizCinto[i][j]) == Potion:
+                                    if nomePotion == player.cinto.matrizCinto[i][j].nome:
+                                        potionBeber = player.cinto.matrizCinto[i].pop(j)
+                                        player.cinto.cargaAtualSlot[i] -= 1
+                                        player.cinto.qtdItensSlots[i] -= 1
+                                        beberPocao(player,potionBeber)
+                                        acaoPotion = False
 
-            #Turno Player (poção e atacar):
-                #Utilizar poções guardadas no cinto (consumirPocao)
-                #Atacar com arma principal
-                    #Inimigo defende
-                #Utilizar skill (uma vez por combate)
+                    if potionBeber == None:
+                        print("*Poção não encontrada*")
 
-            #Turno Inimigo:
-                #Atacar
-                    #Player defende
+                elif combateCommand == 3:
+                    print("*{}*".format(player.skillNome))
+                    player.skill(player,alvo)
+                    acaoSkill = False
 
-            #Verificar player e inimigo (se algum morreu)
+        else:
+            
+            danoAlvo = alvo.atacar()
+            defesaPlayer = player.defender()
+            resultado = danoAlvo - defesaPlayer
+            player.vidaAtual -= resultado
 
-    else:
-        pass
+            print("*Você recebeu {} de dano*".format(resultado))
+            print("Sua vida: {}/{}".format(player.vidaAtual, player.vidaMaxima))
+
+            turnoPlayer = True
+
+        if player.vidaAtual <= 0:
+            player.vidaAtual = 0
+            player.morto = True
+        
+        if alvo.vidaAtual <= 0:
+            alvo.vidaAtual = 0
+            alvo.morto = True
+
+        if player.morto or alvo.morto:
+            break
+
 
 #Quando o player precisar receber recompensas:
 def abrirBau(player: Player, itens: list[(Arma | Potion)]) -> None:
