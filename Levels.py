@@ -1,3 +1,4 @@
+from re import A, I
 from GameObjects import *
 from Eventos import *
 from ferramentas import pause
@@ -12,29 +13,30 @@ def floresta(player: Player) -> int:
 
     andando(player)
 
-    #option (seguir em frente ou não)
-
-    #if (comando==y):
-        #print('''Nada fora do comum até onde você pode ver. Porém, 
-        #mais alguns metros e você nota uma pequena fogueira.
-        #Você se arrisca um pouco, aproximando-se calmamente 
-        #em busca de sinais de companhia''')
-    #else:
-       # print('''Você se mantém na posição atual. Prestando atenção na floresta. 
-       # Você está certo de que sente um calafrio daqueles que te falam que algo o observa''')
+    comando = input("Seguir em frente ou observar um pouco?(S/O")
+    
+    while(comando==False):
+        if (comando=='S'):
+            print('''Nada fora do comum até onde você pode ver. Porém, 
+            mais alguns metros e você nota uma pequena fogueira.
+            Você se arrisca um pouco, aproximando-se calmamente 
+            em busca de sinais de companhia''')
+        elif(comando=='O'):
+            print('''Você se mantém na posição atual. Prestando atenção na floresta. 
+            Você está certo de que sente um calafrio daqueles que te falam que algo o observa''')
+        else:
+            print("Selecione uma opção válida.")
 
 
     #combat
+    
+    print('''Após o leve confronto, você fica cara a cara com seu agressor já derrotado.
+    São poucos os relatos de goblins perambulando essa região, então é justo que você
+    esteja se perguntando se é apenas uma quebra de rotina ou algo mais.''')
 
-    #if (player_hp==0)
-        #print('Fim de jogo')
-    #else 
-       # print('''Após o leve confronto, você fica cara a cara com seu agressor já derrotado.
-        #São poucos os relatos de goblins perambulando essa região, então é justo que você
-       # esteja se perguntando se é apenas uma quebra de rotina ou algo mais.''')
-
-    print('''Mesmo estranhando um pouco, você continua seu caminho. 
-    Coincidência ou não, você ainda tem um objetivo para seguir''')
+    print('''Mesmo estranhando um pouco, você continua seu caminho. Coincidência ou não, 
+    você ainda tem um objetivo para seguir''')
+    
     print('''Quase uma hora de viagem depois, você começa a notar uma mudança no ambiente.
     A floresta começa a se tornar mais fechada, e as árvores mais retorcidas, e aos poucos,
     você se vê forçado a parar frente a uma parede de vinhas rígidas e duras como madeira''')
@@ -141,19 +143,15 @@ def tumba(player: Player) -> int:
     observado: um esqueleto de monge retornado a vida''')
 
     #combat
-        #if(player hp == 0)
-            #print("fim de jogo")
-            #else
-                #print('''Após o estranho combate, você nota por entre os ossos do monge um brilho
-                # escarlate. Tirando algumas costelas do caminho, você toma para si um cristal 
-                # quente''')
+    
+    print('''Após o estranho combate, você nota por entre os ossos do monge um brilho
+    escarlate. Tirando algumas costelas do caminho, você toma para si um cristal 
+    quente''')
     
     print('''Você passa alguns instantes inspecionando o artfato até decidir
     abandonar a tumba. Olhando ao redor, você segue na direção de onde acredita que 
     o esqueleto veio, e encontra uma passagem antes secreta que sai ao topo da tumba.
     Com seu prêmio em mãos, você deixa aquele pedaço de história para trás''')
-
-    #option(cidade ou estrada)
 
     return 1
 
@@ -163,28 +161,24 @@ def cidade(player: Player) -> int:
     principalmente, seu local de descanso. As casas de madeira estão mais destacadas do que
     o de costume, no entanto.''')
 
-    #option(falar com npc ou ir para casa)
-
-    #if(falar com npc)
-        #print('''Você se aproxima do sujeito mais próximo. Um senhor de idade que parece estar 
-        #ajudando em algo. Ele comenta:''')
-        #print('''Estamos nos preparando para o festival do Sol, é estranho como o tempo passa 
-        #rápido, não acha? Eu também me peguei surpreso com os preparativos.''')
-    #else
-        #print('''Você escolheu deixar para descobrir depois. Você prefere avaliar o que 
-        #encontrou e anotar as descobertas''')
+    comando=input("Falar com alguém próximo ou ir para seu lar temporário?(F/L")
+    while(comando==False):
+        if(comando=='F'):
+            print('''Você se aproxima do sujeito mais próximo. Um senhor de idade que parece estar 
+            ajudando em algo. Ele comenta:''')
+            print('''Estamos nos preparando para o festival do Sol, é estranho como o tempo passa 
+            rápido, não acha? Eu também me peguei surpreso com os preparativos.''')
+        elif(comando=='L'):
+            print('''Você escolheu deixar para descobrir depois. Você prefere avaliar o que 
+            encontrou e anotar as descobertas''')
+        else:
+            print("Selecione uma opção válida.")
 
     print('''Você entra em uma estalagem de longa data. O taverneiro te cumprimenta com discrição 
     enquanto serve alguns clientes. Seu quarto está da mesma maneira de sempre, e você parte
     para fazer seus comentários sobre sua pequena aventura... até se lembrar do cristal.
     Você se recorda de um apreciador de joias local, um estudioso, acima de tudo. Ele talvez possa 
     te elucidar um pouco.''')
-
-    #option(ir agora ou mais tarde)
-    #if(ir agora)
-        #print('''Quanto mais cedo você cuidar disso, mais rápido ira sanar sua curiosidade''')
-        #else
-            #print('''O apreciador de joias não ira desaparecer se você não for imediatamente''')
 
     print('''Caminhando por entre as ruas da cidade, você se sente mais pesado do que o comum. Ainda não 
     é tarde o bastante para anoitecer, mas está mais frio do que o de costume por ali. Olhando para o céu, 
@@ -199,15 +193,16 @@ def cidade(player: Player) -> int:
     sua impaciência vem a tona. Mas não era de se esperar a vista que encontrara: enquanto se aproxima, sentindo
     um frio inexplicável, você vê uma estátua de gelo no lugar do senhor que lhe atendera.''')
 
-    #option(inspecionar a estátua ou chamar por ajuda)
 
-    #if(inspecionar)
-        #print('''Observando cuidadosamente a estátua de gelo, você se atreve a dizer que o próprio senhor
+    comando = input("Inspecionar a estátua ou chamar por ajuda?(I/A")
+   
+    if(comando=='I'):
+        print('''Observando cuidadosamente a estátua de gelo, você se atreve a dizer que o próprio senhor
         # tornou-se uno com o gelo que o envolve. Isso está fora da sua alçada, e você não consegue pensar em
         # nada para ajudá-lo. Você também encontra um mapa levando a uma cabana fora da cidade, não tão longe 
         # da tumba que havia encontrado mais cedo.''')  
-    #else
-        #print('''Antes de sair da joalheria, você encontra um mapa para uma cabana próxima,
+    elif(comando=='A'):
+        print('''Antes de sair da joalheria, você encontra um mapa para uma cabana próxima,
         # jogado numa mesa próxima ao senhor congelado. Você corre para fora da joalheria, 
         # clamando pelos guardas mais próximos. As próximas horas são totalmente voltadas para 
         # o acontecimento.''')   
@@ -242,12 +237,7 @@ def casaBruxa(player: Player) -> int:
     Você olha para a direção dos sons, e uma fera de pelos brancos aparece, avançando em sua direção.''')
 
     #combat
-        #if(player hp == 0)
-            #print("fim de jogo")
-        #else
-            #print('''O animal te parece um lobo das neves, um dos maiores que você poderia ver. Mas o que ele 
-            # faz ali é a maior dúvida. No inverno, claramente haveria neve, mas seu lar não é uma terra gelada
-            # para servir de habitat para uma espécie como aquela.''')
+        
 
     print('''Você abandona o animal caído e continua seu caminho até encontrar a cabana mostrada em seu mapa. 
     É uma casa humilde de madeira. Você sente o cheiro de algo sendo preparado do lado de dentro. Você bate
