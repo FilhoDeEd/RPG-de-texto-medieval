@@ -6,7 +6,7 @@ import random as rand
 def floresta(player: Player) -> int:
 
     print('''Você se encontra a alguns metros da estrada principal. Ao seu redor, apenas o som de 
-    um riacho distante, mas você está certo de estar no caminho correto''')
+um riacho distante, mas você está certo de estar no caminho correto''')
 
     andando(player)
 
@@ -14,11 +14,11 @@ def floresta(player: Player) -> int:
     
     if (comando==1):
         print('''Nada fora do comum até onde você pode ver. Porém,  mais alguns metros e você nota 
-        uma pequena fogueira. Você se arrisca um pouco, aproximando-se calmamente  em busca de 
-        sinais de companhia''')
+    uma pequena fogueira. Você se arrisca um pouco, aproximando-se calmamente  em busca de 
+    sinais de companhia''')
     elif(comando==2):
         print('''Você se mantém na posição atual. Prestando atenção na floresta. Você está certo de 
-        que sente um calafrio daqueles que te falam que algo o observa''')
+    que sente um calafrio daqueles que te falam que algo o observa''')
 
     morto = combate(player, goblin)
     if morto:
@@ -28,15 +28,15 @@ def floresta(player: Player) -> int:
             abrirBau(player, goblin.drops)
     
     print('''Após o leve confronto, você fica cara a cara com seu agressor já derrotado. São poucos os 
-    relatos de goblins perambulando essa região, então é justo que você esteja se perguntando se é 
-    apenas uma quebra de rotina ou algo mais.''')
+relatos de goblins perambulando essa região, então é justo que você esteja se perguntando se é 
+apenas uma quebra de rotina ou algo mais.''')
 
     print('''Mesmo estranhando um pouco, você continua seu caminho. Coincidência ou não, você ainda tem 
-    um objetivo para seguir''')
+um objetivo para seguir''')
 
     print('''Quase uma hora de viagem depois, você começa a notar uma mudança no ambiente. A floresta 
-    começa a se tornar mais fechada, e as árvores mais retorcidas, e aos poucos, você se vê forçado a 
-    parar frente a uma parede de vinhas rígidas e duras como madeira''')
+começa a se tornar mais fechada, e as árvores mais retorcidas, e aos poucos, você se vê forçado a 
+parar frente a uma parede de vinhas rígidas e duras como madeira''')
 
     while True:
 
@@ -50,11 +50,11 @@ def floresta(player: Player) -> int:
         
         if comando==2 and player.atributos["DEX"]>=13:
             print('''Mesmo fortemente entrelaçadas, as vinhas possuem espaços suficientes para que você escale 
-            a parede com segurança''')
+        a parede com segurança''')
             break
         else:
             print('''Você consegue notar uma forma de escalar a parede, mas você cai  em todas as suas tentativas 
-            de subi-la''')
+        de subi-la''')
 
     andando(player)
 
