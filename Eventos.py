@@ -176,6 +176,8 @@ def andando(player: Player) -> None:
 #Iniciar combate contra um inimigo:
 def combate(player: Player, alvo: Inimigo) -> bool:
     
+    print("\n*Um {} apareceu*".format(alvo.nome))
+
     player.inCombate = True
     turnoPlayer = True
     acaoSkill = True
@@ -242,7 +244,6 @@ def combate(player: Player, alvo: Inimigo) -> bool:
                         print("*Poção não encontrada*")
 
                 elif combateCommand == 3:
-                    print("*{}*".format(player.skillNome))
                     player.skill(player,alvo)
                     acaoSkill = False
 

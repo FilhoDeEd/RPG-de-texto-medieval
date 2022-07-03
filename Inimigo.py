@@ -27,8 +27,8 @@ class Inimigo:
 
     def atacar(self) -> int:
         
-        return self.arma.dano + dado(4)
+        return self.arma.dano + dado(4, 1, True)
 
     def defender(self) -> int:
         
-        return self.arma.defesa + dado(4)
+        return self.arma.defesa + dado(4, 1, True)

@@ -48,7 +48,10 @@ class Player:
         def mostrar(self) -> None:
 
             print("Mochila:")
-            print("  {}".format(self.itemTopo.nome))
+            if self.itemTopo == None:
+                print("  *vazio*")
+            else:    
+                print("  {}".format(self.itemTopo.nome))
 
     class Cinto:
 
@@ -142,9 +145,11 @@ class Player:
     #Visão geral sobre o personagem:
     def overview(self) -> None:
 
-        print("Nome: {}\n".format(self.nome))
+        print("Nome: {}".format(self.nome))
 
-        print("Classe: {}\n".format(self.classe))
+        print("Classe: {}".format(self.classe))
+
+        print("Skill de classe: {}".format(self.skillNome))
 
         if self.armaPrincipal != None:
             print("Arma Principal: {}".format(self.armaPrincipal.nome))
@@ -158,7 +163,7 @@ class Player:
         print("Atributos: ")
         print("  STR: {}  DEX: {}".format(self.atributos["STR"],self.atributos["DEX"]))
         print("  CON: {}  WIS: {}".format(self.atributos["CON"],self.atributos["WIS"]))
-        print("  INT: {}  CHA: {}\n".format(self.atributos["INT"],self.atributos["CHA"]))
+        print("  INT: {}  CHA: {}".format(self.atributos["INT"],self.atributos["CHA"]))
 
     #Para saber como vai a vida e outros status corriqueiros:
     def status(self) -> None:

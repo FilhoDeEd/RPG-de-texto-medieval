@@ -1,12 +1,11 @@
 from interface import interface
 from Levels import levels
 from GameObjects import *
+from ferramentas import clear
 
 #O jogo foi construido utilizando a versão 3.10.5 do Python
 
 escolhas = interface()
-
-#Lore
 
 nomePlayer = escolhas[0]
 classePlayer_ID = escolhas[1]
@@ -26,4 +25,8 @@ while not gameOver:
     if levelCode == 1:
         lvl += 1
     elif levelCode == 0:
+        clear()
+        print("Game Over")
         gameOver = True
+    elif levelCode == 2:
+        break

@@ -1,14 +1,13 @@
 from GameObjects import *
 from Eventos import *
 from ferramentas import pause
+import random as rand
 
 def floresta(player: Player) -> int:
 
     print('''Você se encontra a alguns metros da estrada principal. 
     Ao seu redor, apenas o som de um riacho distante,
     mas você está certo de estar no caminho correto''')
-
-    abrirBau(player,[pedra,pedra,pedra,pedra,pocaoCura,pocaoEmbaralhar,pocaoCura,pedra,pedra])
 
     andando(player)
 
@@ -24,7 +23,11 @@ def floresta(player: Player) -> int:
         Você está certo de que sente um calafrio daqueles que te falam que algo o observa''')
 
     morto = combate(player, goblin)
-    if morto: return 0
+    if morto:
+        return 0
+    else:
+        if goblin.temDrops:
+            abrirBau(player, goblin.drops)
     
     print('''Após o leve confronto, você fica cara a cara com seu agressor já derrotado.
     São poucos os relatos de goblins perambulando essa região, então é justo que você
@@ -57,6 +60,8 @@ def floresta(player: Player) -> int:
             print('''Você consegue notar uma forma de escalar a parede, mas você cai 
             em todas as suas tentativas de subi-la''')
 
+    andando(player)
+
     print ('''Com certo esforço, você se vê livre em uma nova parte da floresta, quase que
     seguindo uma trilha construída há eras. Você confirma isso alguns metros a frente, 
     descendo uma pequena clareira que parece um acampamento abandonado, adentrando
@@ -65,6 +70,10 @@ def floresta(player: Player) -> int:
     pela erosão de pequenos corregos abaixo de seus pés, até encontrar o que tem certeza 
     de ser seu objetivo: iluminada por alguns raios de Sol que atravessam fissuras do teto pedregoso, 
     uma tumba perdida.''')
+
+    print("*Fim da Floresta*")
+    abrirBau(player,[pocaoCura, pocaoCura])
+    pause()
 
     return 1
 
@@ -78,74 +87,112 @@ def tumba(player: Player) -> int:
     print('''Sem se amedrontar, você empunha sua tocha e parte para desbravar a tumba. 
     A primeira vista, era um lugar desolado, frio como todo o resto, e, estranhamente, se,
     armadilhas para invasores. No final do primeiro corredor, no entanto, você tem um pressentimento:
-    talvez este lugar seja um labirinto.''')
+    talvez este lugar seja um labirinto. Você se depara com dois caminhos.''')
 
+    if player.atributos["WIS"] >= 13 or player.atributos["INT"] >= 13:
 
-    #option(observar o chão)
-    #if (option=observar)
-        #print ('''você nota 1 esqueleto a esquerda, e 2 a direita''')
+        observar = escolhasUser(["observar","prosseguir"])
+        if observar == 1:
+            print ('''você nota 1 esqueleto a esquerda, e 2 a direita.''')
+
+    while True:
+
+        caminhoTumba1 = escolhasUser(["caminho esquerdo","caminho direito"])
+
+        if caminhoTumba1 == 2:
+            print('''Graças a sua tocha, você percebe que o caminho leva a dois caminhos sem saída.
+            Você retorna ao ponto de partida.''')
+        else:
+            print('''Você aparenta ter começado corretamente. Você segue em frente e encontra uma nova bifurcação.''')
+            break
     
-    #caminho certo = 1
-    #caminho errado = 2
-
-    #option (direita ou esquerda)
-    #if(direita)
-        #print('''Graças a sua tocha, você percebe que o caminho leva a dois caminhos sem saída.
-        # você retorna ao ponto de partida''')
-    #else
-        #print('''Você aparenta ter começado corretamente''')
-
+    #puzzle do labirinto
     
+    comando = escolhasUser(["envestigar o caminho","observar o caminho"])
 
-    #do while (contador certo<7)
-        #puzzle do labirinto
-        #+contador de direções certas
-        #+contador de direções erradas
+    if comando==1 and player.atributos["INT"]>=13:
+        print('''Parando por alguns minutos para estudar o lugar, você compreende:
+        os caminhos certos são aqueles que possuem um único esqueleto em sua direção.
+        A partir de agora, você sabe por onde ir.''')
+    else:
+        print('''Apesar de se concentrar o máximo que pode, nada desse lugar te parece 
+        dar uma luz no caminho certo. Sinceramente, todo o lugar parece igual para você.''')
+        
+    if comando==2 and player.atributos["WIS"]>=13:
 
-        #option(estudar o lugar ou observar)
-        #if(comando==estudar && player_stats[INT]>=13)
-            #print('''Parando por alguns minutos para estudar o lugar, você compreende:
-            # os caminhos certos são aqueles que possuem um único esqueleto em sua direção.
-            # A partir de agora, você sabe por onde ir''')
-        #else
-            #print('''Apesar de se concentrar o máximo que pode, nada desse lugar te parece 
-            # dar uma luz no caminho certo. Sinceramente, todo o lugar parece igual para você''')
+        print('''Com calma e atenção, você consegue notar as escrituras remanescentes nas
+        paredes dos corredores. Elas te guiam pelo lugar.''')
+
+        if player.classe == "Clérigo":
+
+            print('''Você consegue ler alguns detalhes das paredes: essa tumba foi construída 
+            eras atrás em homenagem ao Sol e sua vitória sobre o Inverno, mas, anos depois,
+            o lugar seria deixado por todos menos os monges que se instalaram. Você agora sabe
+            quem são os donos dos esqueletos.''')
+    else:
+        print('''Você tem certeza que vai se perder, mas apenas isso.''')
+    
+    contadorCerto = 0
+    contadorErrado = 0
+
+    while contadorCerto < 7:
         
-        #if(comando==observar && player_stats[WIS]>=13)
-            #print('''Com calma e atenção, você consegue notar as escrituras remanescentes nas
-            # paredes dos corredores. Elas te guiam pelo lugar''')
-            #if (player_class[id]==clerigo)
-                #print('''Você consegue ler alguns detalhes das paredes: essa tumba foi construída 
-                # eras atrás em homenagem ao Sol e sua vitória sobre o Inverno, mas, anos depois,
-                # o lugar seria deixado por todos menos os monges que se instalaram. Você agora sabe
-                # quem são os donos dos esqueletos''')
-        #else
-            #print('''Você tem certeza que vai se perder, mas apenas isso''')
+        observar = escolhasUser(["observar","prosseguir"])
+
+        numCaminhos = rand.randint(2,4)
+
+        caminhos = range(1,numCaminhos+1)
+
+        caminhoCerto = rand.choice(caminhos)
+
+        observar = escolhasUser(["observar","prosseguir"])
+
+        if observar == 1:
+            print("você nota 1 esqueleto pelo caminho {}, e 2 pelos outros caminhos.".format(caminhoCerto))
+
+        nomeCaminhos = []
+
+        for i in range(numCaminhos):
+
+            nomeCaminhos.append("caminho" + str(i+1))
+
+        caminhoEscolhido = escolhasUser(nomeCaminhos)
+
+        if caminhoEscolhido == caminhoCerto:
+            contadorCerto += 1
+            andando(player)
+        else:
+            contadorErrado += 1
         
-        #if (caminho==1)
-            #contador certo+=1
-            #else
-                #contador errado+=1
-        
-        #if (contador errado==3)
-            #combat
+        if contadorErrado == 3:
+            morto = combate(player, esqueleto)
+            if morto:
+                return 0
+            andando(player)        
         
     print('''Depois de um longo tempo caminhando por entre estes velhos corredores,
     você finalmente chega numa sala diferente. Parece o centro da tumba, numa área
     ritualística com um pedestal em seu centro, vazio ao que parece. Você caminha 
     em sua direção, e sente um calafrio. Você olha ao redor e nota estar sendo 
-    observado: um esqueleto de monge retornado a vida''')
+    observado: um esqueleto de monge retornado a vida.''')
 
-    #combat
-    
+    morto = combate(player, esqueleto_monge)
+    if morto:
+        return 0
+
     print('''Após o estranho combate, você nota por entre os ossos do monge um brilho
     escarlate. Tirando algumas costelas do caminho, você toma para si um cristal 
-    quente''')
+    quente.''')
     
     print('''Você passa alguns instantes inspecionando o artfato até decidir
     abandonar a tumba. Olhando ao redor, você segue na direção de onde acredita que 
     o esqueleto veio, e encontra uma passagem antes secreta que sai ao topo da tumba.
-    Com seu prêmio em mãos, você deixa aquele pedaço de história para trás''')
+    Com seu prêmio em mãos, você deixa aquele pedaço de história para trás.''')
+
+    andando(player)
+    print("*Fim da Tumba*")
+    abrirBau(player,[pocaoCura, pocaoEmbaralhar, pocaoForca, escudo])
+    pause()
 
     return 1
 
@@ -155,18 +202,16 @@ def cidade(player: Player) -> int:
     principalmente, seu local de descanso. As casas de madeira estão mais destacadas do que
     o de costume, no entanto.''')
 
-    comando=input("Falar com alguém próximo ou ir para seu lar temporário?(F/L")
-    while(comando==False):
-        if(comando=='F'):
-            print('''Você se aproxima do sujeito mais próximo. Um senhor de idade que parece estar 
-            ajudando em algo. Ele comenta:''')
-            print('''Estamos nos preparando para o festival do Sol, é estranho como o tempo passa 
-            rápido, não acha? Eu também me peguei surpreso com os preparativos.''')
-        elif(comando=='L'):
-            print('''Você escolheu deixar para descobrir depois. Você prefere avaliar o que 
-            encontrou e anotar as descobertas''')
-        else:
-            print("Selecione uma opção válida.")
+    comando = escolhasUser(["falar com alguém próximo","ir para seu lar temporário"])
+
+    if comando==1:
+        print('''Você se aproxima do sujeito mais próximo. Um senhor de idade que parece estar 
+        ajudando em algo. Ele comenta:''')
+        print('''Estamos nos preparando para o festival do Sol, é estranho como o tempo passa 
+        rápido, não acha? Eu também me peguei surpreso com os preparativos.''')
+    elif comando==2:
+        print('''Você escolheu deixar para descobrir depois. Você prefere avaliar o que 
+        encontrou e anotar as descobertas.''')
 
     print('''Você entra em uma estalagem de longa data. O taverneiro te cumprimenta com discrição 
     enquanto serve alguns clientes. Seu quarto está da mesma maneira de sempre, e você parte
@@ -174,13 +219,15 @@ def cidade(player: Player) -> int:
     Você se recorda de um apreciador de joias local, um estudioso, acima de tudo. Ele talvez possa 
     te elucidar um pouco.''')
 
+    andando(player)
+
     print('''Caminhando por entre as ruas da cidade, você se sente mais pesado do que o comum. Ainda não 
     é tarde o bastante para anoitecer, mas está mais frio do que o de costume por ali. Olhando para o céu, 
     você diversas aves voando ao sul, como se estivessem migrando. Mais uma coincidência.''')
    
     print('''Você chega ao apreciador de joias e sua humilde loja. Uma vitrine apresenta algumas belas
     joias para possíveis, compradores, e por dentro você vê alguns outros itens de colecionador, como relógios
-    caros e derivados''')
+    caros e derivados.''')
 
     print('''Você apresenta o cristal de fogo ao senhor, e ele fica estupefato. Após alguns segundos de apreciação,
     ele pede sua licença e vai para o quarto dos fundos. Você espera calmamente, mas ele se demora demais, e 
@@ -189,12 +236,12 @@ def cidade(player: Player) -> int:
 
     comando = escolhasUser(["inspecionar a estátua","chamar por ajuda"])
    
-    if(comando==1):
+    if comando==1:
         print('''Observando cuidadosamente a estátua de gelo, você se atreve a dizer que o próprio senhor
         # tornou-se uno com o gelo que o envolve. Isso está fora da sua alçada, e você não consegue pensar em
         # nada para ajudá-lo. Você também encontra um mapa levando a uma cabana fora da cidade, não tão longe 
         # da tumba que havia encontrado mais cedo.''')  
-    elif(comando==2):
+    elif comando==2:
         print('''Antes de sair da joalheria, você encontra um mapa para uma cabana próxima,
         # jogado numa mesa próxima ao senhor congelado. Você corre para fora da joalheria, 
         # clamando pelos guardas mais próximos. As próximas horas são totalmente voltadas para 
@@ -214,6 +261,11 @@ def cidade(player: Player) -> int:
     escuridão da noite. Não há ninguém nas ruas, mas as luzes estão acessas. Você ainda não sabia disso,
     mas nos próximos dias todos perceberiam: o Sol não estava mais nascendo.''')
 
+    andando(player)
+    print("*Fim da Cidade*")
+    abrirBau(player,[corote])
+    pause()
+
     return 1
 
 def casaBruxa(player: Player) -> int:
@@ -226,11 +278,18 @@ def casaBruxa(player: Player) -> int:
     As folhas são as únicas coisas que fazem som além das suas pegadas enquanto os ventos te forçam a se lembrar
     das condições dos novos tempos.''')
 
+    andando(player)
+
     print('''Quando você sentia estar completamente sozinho, você escuta arbustos se agitando por perto. 
     Você olha para a direção dos sons, e uma fera de pelos brancos aparece, avançando em sua direção.''')
 
-    #combat
-        
+    morto = combate(player, lobo)
+    if morto:
+        return 0
+    else:
+        if lobo.temDrops:
+            abrirBau(player, lobo.drops)
+
     print('''Você abandona o animal caído e continua seu caminho até encontrar a cabana mostrada em seu mapa. 
     É uma casa humilde de madeira. Você sente o cheiro de algo sendo preparado do lado de dentro. Você bate
     a porta, e uma mulher com por volta dos seus 30 anos o atende.''')
@@ -242,8 +301,13 @@ def casaBruxa(player: Player) -> int:
     a si mesmo tomar cuidado.''')
 
     print('''Aurelia então prepara algumas coisas, e quando você se dá conta, ela te coloca um colar dourado com
-    forma de Sol. Você fecha seus olhos por instantes, e se vÊ numa paisagem que nunca antes havia visto: um
+    forma de Sol. Você fecha seus olhos por instantes, e se vê numa paisagem que nunca antes havia visto: um
     deserto congelante.''')
+
+    andando(player)
+    print("*Fim da Casa da Bruxa*")
+    abrirBau(player,[pocaoForca ,pocaoResistencia, maca])
+    pause()
 
     return 1
 
@@ -254,13 +318,20 @@ def deserto(player: Player) -> int:
     Ela também te pede para lidar com um encontro inesperado, apontando para o horizonte. Você demora alguns segundos
     para notar, mas seus olhos se acostumam e você vê um escorpião gigante indo até vocês.''')
 
-    #combat
+    morto = combate(player, escorpiao)
+    if morto:
+        return 0
+    else:
+        if escorpiao.temDrops:
+            abrirBau(player, escorpiao.drops)
 
     print('''Lutar num deserto já é uma coisa que poucos gostariam de fazer, mas você prefere mais o calor
     da batalha do que congelar ali mesmo. 
     Aurelia agradece pelos seus esforços e garante que ira te guiar por caminhos mais seguros dali para frente.
     Você está um pouco mais desconfiado, mas tem certeza que poderá lidar com algum problema futuro se ela for a
     causa.''')
+
+    andando(player)
 
     print('''Vocês dois caminham pelo que parecem dias. Você até já aprendeu a olhar o tempo pelo movimento da lua.
     Aurelia comenta que é uma praticante de magia há vários anos, mas que a falta do Sol vem prejudicando seus 
@@ -281,6 +352,8 @@ def deserto(player: Player) -> int:
     print('''Vocês três continuam sua viagem até encontrarem algumas ruínas com diversos desenhos e rostos. Algumas 
     são semelhantes aos da tumba, mas outros te são desconhecidos. No centro de tudo, uma pequena tenda iluminada por 
     uma fogueira, e uma nova figura sentada, olhando para algumas ruínas mais conservadas.''')
+
+    andando(player)
 
     print('''O homem se levanta como se soubesse que vocês haviam chegado. É um senhor em volta de seus 40 anos, 
     vestido como quem está acostumado a viver no calor do deserto. Aurelia pede para que você e Tamara a esperem, e 
@@ -314,25 +387,22 @@ def deserto(player: Player) -> int:
     dela estava em vários dos desenhos das ruínas. Ela foi chamada de Primavera, e a mulher albina era fria como gelo,
     estaria você diante das personificações das estações?''')
 
-    opção = input("Entregar o cristal?(S/N")
+    entregarCristal = escolhasUser(["entregar o cristal","não entregar o cristal"])
 
-    if(opção=='S'):
+    if entregarCristal == 1:
         print('''Você teme por sua vida agora que a paranoia toma conta dos seus pensamentos. As simples ideias do que
         essa mulher possa ser é o suficiente para fazer suas pernas vacilarem. Você retira o cristal de fogo de sua 
         mochila, e o apresenta a Cerulea. ''')
         
-        pause
+        pause()
 
         print('''Aurelia demonstra que irá fazer algo, mas metade de seu corpo é revestido por gelo em questão de
         segundos. Isso confirma que você nunca teve uma chance.''')
 
 
-
         print('''Cerulea toma o cristal de você, e o olha como um achado raro, até parecendo se esquecer de você por 
         alguns instantes. Você preferia que ela realmente tivesse te esquecido. O frio ao seu redor aumenta de maneira
         assustadora. Seu corpo começa a congelar dos pés até a cabeça.''')
-
-
 
         print('''"Você merece ao menos entender o que é isso", diz Cerulea sem te olhar nos olhos, "eu bem disse que seu
         destino não seria o mesmo dos outros, mas nunca disse que seria misericordioso, ou que seria até mesmo poupado". 
@@ -342,17 +412,16 @@ def deserto(player: Player) -> int:
         print('''O gelo lentamente toma conta. Você sente seu interior gelando por inteiro, e fecha seus olhos para seu fim.
         Aos poucos, você para de pensar.''')
 
-
         print('''Final ruim''')
-                
-    else:
+
+        return 2
+
+    elif entregarCristal == 2:
         print('''Mesmo sabendo que suas chances são quase nulas, você se nega a entregar o cristal a ela, o que claramente
         a irrita.''')
 
         print('''"Então, que você se junte ao apreciador de joias, mortal". Assim que essas palavras terminam, você vê Aurelia sendo
         tomada por gelo, e sente seu corpo gelando rapidamente enquanto Cerulea desaparece de sua visão.''')
-
-
 
         print('''Algo começa a esquentar você. Aos poucos, você recobra a consciência. Seu corpo molhado com o gelo derretido cai em neve.
         Você olha ao redor e tudo está congelado. Não há sinal de Aurelia, mas a estátua de Sandman continua aonde você se recorda.''')
@@ -362,6 +431,8 @@ def deserto(player: Player) -> int:
 
         print('''Você retira o cristal de fogo, brilhando como brasa mas não queimando ao toque. Seu primeiro instinto é tentar descongelar 
         Sandman, e assim você o tenta.''')
+
+        pause()
 
         print('''Sua noção de tempo está defasada. A tarefa parece demorar horas para ter algum progresso. Mas você consegue descongelar o 
         senhor insconsciente.''')
@@ -379,8 +450,13 @@ def deserto(player: Player) -> int:
         criança: Eonhad, o Verão e seu Sol, os abandonou, decepcionado por sua mortalidade falha. Mas você pode ajudar a trazê-lo de volta. Ajude
         a última cidade a perdurar, e ele se arrependerá por sua ausência. Entendo o que está pensando, mas antes tarde do que nunca, é o que vocês
         dizem. Uma última coisa para guardar na memória: a pessoa certa no lugar errado por fazer toda a diferença do mundo. A humanidade agradece
-        seus esforços,''' +player.nome+'''."''')
-   
+        seus esforços,''' + player.nome + '''."''')
+    
+    andando(player)
+    print("*Fim do Deserto*")
+    abrirBau(player,[pocaoCura ,pocaoResistencia, pocaoForca, boomerang])
+    pause()
+
     return 1
 
 def ultimaCidade(player: Player) -> int:
@@ -399,7 +475,9 @@ def ultimaCidade(player: Player) -> int:
 
     print('''"Não o conheço, mortal, mas peço para que desista da resistência", diz-lhe o sujeito, mas você não recua. "Eu, ao menos, tentei."''')
 
-    #combat
+    morto = combate(player, outono)
+    if morto:
+        return 0
 
     print('''Foi a coisa mais inesperada que você teve que fazer. Batalhar com Outono sem o suporte inicial de Aurelia seria impossível, mas mesmo
     que você ainda esteja de pé, reconhece que ele está na vantagem.''')
@@ -417,6 +495,8 @@ def ultimaCidade(player: Player) -> int:
 
     print('''Pelo canto dos olhos, você vê o impossível: as estrelas e a própria lua começam a se mover, ao ponto de até mesmo cortarem os céus
     como cometas. O brilho cresce até ser quase cegante, mas o mais impressinante é o que veio a seguir.''')
+
+    pause()
 
     print('''Um brilho no horizonte, dourado como ouro, começa a subir, aquecendo você pelas costas. Depois de muitos dias, o farol de sua vida 
     começa a retornar. Mais uma vez, a luz do dia começava a nascer. A posição do Sol, recém-nascido, declarava as dez horas da manhã como se fosse
@@ -440,6 +520,8 @@ def ultimaCidade(player: Player) -> int:
     Matando e roubando seus iguais, quebrando o trabalho da própria Mãe Natureza por sua ganância e sua.... filosofia dos mortais como o centro de 
     tudo. Como você garante que isso não ocorrerá de novo?"''')
 
+    pause()
+
     print('''"Eu não posso, mas se a vida fosse algo a ser controlado, não seria entregue a eles, de um jeito ou de outro. Você pode não concordar com isso,
     mas essa é a forma que as coisas serão."''')
 
@@ -461,6 +543,6 @@ def ultimaCidade(player: Player) -> int:
 
     print('''Fim de jogo. Final Verdadeiro.''')
 
-    return 1
+    return 2
 
 levels = [floresta, tumba, cidade, casaBruxa, deserto, ultimaCidade]

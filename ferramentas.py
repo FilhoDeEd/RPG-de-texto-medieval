@@ -42,4 +42,5 @@ def dado(faces: int = 6, lances: int = 1, somar: bool = False ) -> (int | list):
     
     if somar:
         return sum(valores)
-    else: return valores
+    else:
+        return valores
