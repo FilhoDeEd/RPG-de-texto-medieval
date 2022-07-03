@@ -293,12 +293,6 @@ def deserto(player: Player) -> int:
     print('''Aurelia não parecia tentada a deixar a jovem moça para trás, e a convidou para acompanhar vocês. 
     Tamara, a primeira vista, não desejava atrapalhar seus assuntos, mas preferiu não continuar sozinha.''')
 
-    #option (apenas continuar ou observar)
-        #if(observar)
-            #print('''''')
-        #else
-        #break
-
     print('''Vocês três continuam sua viagem até encontrarem algumas ruínas com diversos desenhos e rostos. Algumas 
     são semelhantes aos da tumba, mas outros te são desconhecidos. No centro de tudo, uma pequena tenda iluminada por 
     uma fogueira, e uma nova figura sentada, olhando para algumas ruínas mais conservadas.''')
@@ -400,7 +394,7 @@ def deserto(player: Player) -> int:
         criança: Eonhad, o Verão e seu Sol, os abandonou, decepcionado por sua mortalidade falha. Mas você pode ajudar a trazê-lo de volta. Ajude
         a última cidade a perdurar, e ele se arrependerá por sua ausência. Entendo o que está pensando, mas antes tarde do que nunca, é o que vocês
         dizem. Uma última coisa para guardar na memória: a pessoa certa no lugar errado por fazer toda a diferença do mundo. A humanidade agradece
-        seus esforços,"''' + player.nome)
+        seus esforços,''' +player.nome+'''."''')
    
     return 1
 
