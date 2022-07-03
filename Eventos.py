@@ -11,7 +11,7 @@ def andando(player: Player) -> None:
             
             print(" ")
 
-            mainCommand = escolhasUser(["prosseguir","mexer nos itens","consumir uma poção"])
+            mainCommand = escolhasUser(["prosseguir","mexer nos itens","consumir uma poção","ver status"])
 
             #Prosseguir história:
             if mainCommand == 1:
@@ -110,7 +110,7 @@ def andando(player: Player) -> None:
                                 player.mao = None
 
                         elif type(player.mao) == Arma:
-                            itemMaoCommand = escolhasUser(["Definir como arma principal","dropar","cancelar"])
+                            itemMaoCommand = escolhasUser(["definir como arma principal","dropar","cancelar"])
 
                             if itemMaoCommand == 3:
                                 pass
@@ -122,7 +122,7 @@ def andando(player: Player) -> None:
                                 player.mao = None
 
             #Consumir uma poção:
-            else:
+            elif mainCommand == 3:
                 
                 print(" ")
                 if type(player.mochila.itemTopo) == Potion:
@@ -160,6 +160,15 @@ def andando(player: Player) -> None:
                 if potionBeber == None:
                     print("*Poção não encontrada*")
 
+            #Ver status
+            else:
+                statusCommand = escolhasUser(["ver status","ver geral"])
+
+                if statusCommand == 1:
+                    player.status()
+                else:
+                    player.overview()
+
         print(" ")
 
 #Iniciar combate contra um inimigo:
@@ -185,17 +194,48 @@ def combate(player: Player, alvo: Inimigo) -> None:
 #Quando o player precisar receber recompensas:
 def abrirBau(player: Player, itens: list[(Arma | Potion)]) -> None:
 
-    #Para cada item em itens, perguntar o seguinte:
-        #Manter
-        #Guardar na mochila
-        #Guardar no cinto
-        #Se Potion: Beber
-        #Se Arma: Definir como principal
-        #Dropar
+    print("\n*Você achou um báu*")
 
-    pass
+    for item in itens:
 
-#Utilizar um consumível:
+        print("*Você recebeu {}*".format(item.nome))
+
+        opcoes = ["guardar na mochila","guardar no cinto","dropar"]
+        if type(item) == Potion:
+            opcoes.append("beber")
+
+        novoItemCommand = escolhasUser(opcoes)
+
+        if novoItemCommand == 1:
+            player.mochila.guardar(item)
+
+        elif novoItemCommand == 2:
+            cheio = player.cinto.guardar(item)
+
+            if cheio != None:
+
+                opcoes2 = ["guardar na mochila","dropar"]
+                if type(item) == Potion:
+                    opcoes2.append("beber")
+
+                cintoCheioCommand = escolhasUser(opcoes2)
+
+                if cintoCheioCommand == 1:
+                    player.mochila.guardar(item)
+                elif cintoCheioCommand == 2:
+                    item = None
+                elif cintoCheioCommand == 3:
+                    beberPocao(player,item)
+
+        elif novoItemCommand == 3:
+            item = None
+
+        elif novoItemCommand == 4:
+            beberPocao(player,item)
+    
+    print(" ")
+
+#Utilizar uma poção:
 def beberPocao(player: Player, potion: Potion) -> None:
 
     for efeito in potion.efeitos:

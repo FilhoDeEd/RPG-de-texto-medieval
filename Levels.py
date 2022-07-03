@@ -8,15 +8,7 @@ def floresta(player: Player) -> int:
     Ao seu redor, apenas o som de um riacho distante,
     mas você está certo de estar no caminho correto''')
 
-    player.mochila.guardar(pedra)
-    player.mochila.guardar(pedra)
-    player.mochila.guardar(pedra)
-    player.mochila.guardar(pocaoCura)
-    player.cinto.guardar(pocaoCura)
-    player.cinto.guardar(pocaoCura)
-    player.cinto.guardar(pocaoCura)
-    player.cinto.guardar(pocaoEmbaralhar)
-    player.cinto.guardar(pedra)
+    abrirBau(player,[pedra,pedra,pedra,pedra,pocaoCura,pocaoEmbaralhar,pocaoCura,pedra,pedra])
 
     andando(player)
 

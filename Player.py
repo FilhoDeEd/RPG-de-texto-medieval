@@ -154,7 +154,10 @@ class Player:
     #Para saber como vai a vida e outros status corriqueiros:
     def status(self) -> None:
 
-        #Dano
+        if self.armaPrincipal != None:
+            print("Arma Principal: {}".format(self.armaPrincipal.nome))
+        else:
+            print("Sem arma principal")
         print("Vida Atual: {}/{}".format(self.vidaAtual,self.vidaMaxima))
     
     #Calcular ataque:
