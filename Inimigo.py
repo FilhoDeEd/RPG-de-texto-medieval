@@ -1,10 +1,11 @@
 from typing import Callable
 from Arma import Arma
+from Potion import Potion
 from ferramentas import dado
 
 class Inimigo:
 
-    def __init__(self, nome: str, vidaMaxima: int, arma: Arma, skills: list[Callable] = []):
+    def __init__(self, nome: str, vidaMaxima: int, arma: Arma, drops: list[(Arma | Potion)], skills: list[Callable] = []):
 
         #Informações básicas:
         self.nome = nome
@@ -16,13 +17,13 @@ class Inimigo:
         #Combate:
         self.skills = skills
         self.arma = arma
-        self.medo = 0.0
+        self.drops = drops
         self.morto = False
 
     def atacar(self) -> int:
         
-        return self.dano + dado(4)
+        return self.arma.dano + dado(4)
 
     def defender(self) -> int:
         
-        return self.defesa + dado(4)
+        return self.arma.defesa + dado(4)

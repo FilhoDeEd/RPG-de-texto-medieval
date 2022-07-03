@@ -8,39 +8,50 @@ from ferramentas import dado
 #Criar inimigos e suas skills aqui:
 
 esqueleto = Inimigo("Esqueleto", 4, 2, 2)
-
-Goblin = Inimigo("Goblin", 0, 0, 0)
-Esqueleto_Monge = Inimigo("Esqueleto do Monge", 0, 0, 0)
-Lobo = Inimigo("Lobo", 0, 0, 0)
-Escorpião = Inimigo("Escorpião", 0, 0, 0)
-Outono = Inimigo("Outono", 0, 0, 0)
-
+goblin = Inimigo("Goblin", 0, 0, 0)
+esqueleto_Monge = Inimigo("Esqueleto do Monge", 0, 0, 0)
+lobo = Inimigo("Lobo", 0, 0, 0)
+escorpião = Inimigo("Escorpião", 0, 0, 0)
+outono = Inimigo("Outono", 0, 0, 0)
 
 #Criar armas aqui:
 
 pedra = Arma("Pedra", True, 1, 0)
 
-Machado = Arma("Pedra", True, 0, 0) #Bárbaro
-Espada = Arma("Espada", True, 0, 0) #Soldado
-Arco = Arma("Arco", False, 0, 0) #Patrulheiro
-Adaga = Arma("Adaga", True, 0, 0) #Ladrão - Goblin - DROP
-Martelo = Arma("Martelo", True, 0, 0) #Clérigo
-Foco_Arcano = Arma("Foco Arcano", True, 0, 0) #Mago
-Punho = Arma("Punho", True, 0, 0) #Esqueleto do Monge
-Presas = Arma("Pesas", True, 0, 0) #Lobo
-Cauda_Venenosa = Arma("Cauda Venenosa", True, 0, 0) #Escorpião - DROP
-Arma_Natural = Arma("Arma Natural", True, 0, 0) #Outono
-Besta = Arma("Besta", False, 0, 0) #Achado
-Maça = Arma("Maça", True, 0, 0) #Achado
-Boomerang = Arma("Boomerang", False, 0, 0) #Achado
+machado = Arma("Pedra", True, 0, 0) #Bárbaro
+espada = Arma("Espada", True, 0, 0) #Soldado
+arco = Arma("Arco", False, 0, 0) #Patrulheiro
+adaga = Arma("Adaga", True, 0, 0) #Ladrão - Goblin - DROP
+martelo = Arma("Martelo", True, 0, 0) #Clérigo
+foco_arcano = Arma("Foco Arcano", True, 0, 0) #Mago
+punho = Arma("Punho", True, 0, 0) #Esqueleto do Monge
+presas = Arma("Pesas", True, 0, 0) #Lobo
+cauda_venenosa = Arma("Cauda Venenosa", True, 0, 0) #Escorpião - DROP
+arma_natural = Arma("Arma Natural", True, 0, 0) #Outono
+besta = Arma("Besta", False, 0, 0) #Achado
+maca = Arma("Maça", True, 0, 0) #Achado
+boomerang = Arma("Boomerang", False, 0, 0) #Achado
 
 #Criar skills aqui:
-Furia = Skill("Furia", ) #Bárbaro
-Ataque_Extra = Skill("Ataque Extra", ) #Soldado
-Especialização = Skill("Especialização", ) #Patrulheiro
-Ataque_Furtivo = Skill("Ataque Furtivo", ) #Ladrão
-Luz_da_Punição = Skill("Luz da Punição", ) #Clérigo
-Bola_de_Fogo = Skill("Bola de Fogo", ) #Mago
+
+
+def furia(player: Player, alvo: Inimigo):
+    pass
+
+def ataque_extra(player: Player, alvo: Inimigo):
+    pass
+
+def especializacao(player: Player, alvo: Inimigo):
+    pass
+
+def ataque_furtivo(player: Player, alvo: Inimigo):
+    pass
+
+def luz_da_punicao(player: Player, alvo: Inimigo):
+    pass
+
+def bola_de_fogo(player: Player, alvo: Inimigo):
+    pass
 
 #Criar poções e seus efeitos aqui:
 def curar(player: Player) -> None:
@@ -69,13 +80,13 @@ pocaoEmbaralhar = Potion("Embaralhar","Embaralhar os itens de sua mochila",[shuf
 
 #----------------------------------------------------------------------------------------------
 
-#[<Nome>,<Atributos>,<Equipamentos>]
+#[<Nome>,<Atributos>,<Arma inicial>,<Skill>]
 #Ordem dos atributos: Força, Destreza, Constituição, Sabedoria, Inteligência, Carisma
 classes = {
-    0:["Bárbaro",[14, 12, 15, 8, 10, 13],["Machado","Gibão de Pele","Totem"]],
-    1:["Soldado",[15, 12, 14, 8, 13, 10],["Espada","Armadura de Talas","Escudo"]],
-    2:["Patrulheiro",[12, 15, 13, 14, 10, 8],["Arco","Brunea","Mapa"]],
-    3:["Ladrão",[8, 15, 12, 13, 14, 10],["Adaga","Armadura de Couro","Ferramentas"]],
-    4:["Clérigo",[13, 8, 14, 15, 10, 12],["Martelo","Armadura de Placas","Símbolo Sagrado"]],
-    5:["Mago",[8, 13, 14, 12, 15, 10],["Foco Arcano","Manto","Grimório"]]
+    0:["Bárbaro", [14, 12, 15, 8, 10, 13], machado, ["Fúria", furia]],
+    1:["Soldado", [15, 12, 14, 8, 13, 10], espada, ["Ataque Extra", ataque_extra]],
+    2:["Patrulheiro", [12, 15, 13, 14, 10, 8], arco, ["Especialização", especializacao]],
+    3:["Ladrão", [8, 15, 12, 13, 14, 10], adaga, ["Ataque Furtivo", ataque_furtivo]],
+    4:["Clérigo", [13, 8, 14, 15, 10, 12], martelo, ["Luz da Punição", luz_da_punicao]],
+    5:["Mago", [8, 13, 14, 12, 15, 10], foco_arcano, ["Bola de Fogo", bola_de_fogo]]
 }

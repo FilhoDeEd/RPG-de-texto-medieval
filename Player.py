@@ -1,8 +1,8 @@
 import random as rand
+from typing import Callable
 from ferramentas import escolhasUser, dado
 from Potion import Potion
 from Arma import Arma
-from Inimigo import Inimigo
 
 class Player:
 
@@ -103,7 +103,7 @@ class Player:
                 for j in range(self.qtdItensSlots[i]):
                     print("   {}".format(self.matrizCinto[i][j].nome))     
 
-    def __init__(self, nome: str, classe: str, atributos: list[int], equipamentos: list[str]) -> None:
+    def __init__(self, nome: str, classe: str, atributos: list[int], armaInicial: Arma, skill: list[str, Callable] ) -> None:
 
         #Informações básicas:
         self.nome = nome
@@ -116,7 +116,6 @@ class Player:
             "INT":atributos[4],
             "CHA":atributos[5]
         }
-        self.equipamentos = equipamentos
 
         #Vida:
         if classe == "Bárbaro": self.vidaMaxima = 36
@@ -127,10 +126,12 @@ class Player:
         #Mochila, Cinto, Mão:
         self.mochila = self.Mochila()
         self.cinto = self.Cinto()
-        self.armaPrincipal: Arma = None
+        self.armaPrincipal: Arma = armaInicial
         self.mao: (Arma | Potion) = None
 
         #Combate:
+        self.skillNome = skill[0]
+        self.skill = skill[1]
         self.morto = False
 
     #Visão geral sobre o personagem:
@@ -140,21 +141,27 @@ class Player:
 
         print("Classe: {}\n".format(self.classe))
 
+        if self.armaPrincipal != None:
+            print("Arma Principal: {}".format(self.armaPrincipal.nome))
+            print("Dano: {}".format(self.armaPrincipal.dano))
+            print("Defesa: {}".format(self.armaPrincipal.defesa))
+        else:
+            print("Sem arma principal")
+            
+        print("Vida Atual: {}/{}".format(self.vidaAtual,self.vidaMaxima))
+
         print("Atributos: ")
         print("  STR: {}  DEX: {}".format(self.atributos["STR"],self.atributos["DEX"]))
         print("  CON: {}  WIS: {}".format(self.atributos["CON"],self.atributos["WIS"]))
         print("  INT: {}  CHA: {}\n".format(self.atributos["INT"],self.atributos["CHA"]))
-
-        print("Equipamentos iniciais: ")
-        print("  " + self.equipamentos[0])
-        print("  " + self.equipamentos[1])
-        print("  " + self.equipamentos[2]+"\n")
 
     #Para saber como vai a vida e outros status corriqueiros:
     def status(self) -> None:
 
         if self.armaPrincipal != None:
             print("Arma Principal: {}".format(self.armaPrincipal.nome))
+            print("Dano: {}".format(self.armaPrincipal.dano))
+            print("Defesa: {}".format(self.armaPrincipal.defesa))
         else:
             print("Sem arma principal")
         print("Vida Atual: {}/{}".format(self.vidaAtual,self.vidaMaxima))

@@ -1,4 +1,3 @@
-from re import A, I
 from GameObjects import *
 from Eventos import *
 from ferramentas import pause
@@ -13,20 +12,16 @@ def floresta(player: Player) -> int:
 
     andando(player)
 
-    comando = input("Seguir em frente ou observar um pouco?(S/O")
+    comando = escolhasUser(["seguir em frente","observar um pouco"])
     
-    while(comando==False):
-        if (comando=='S'):
-            print('''Nada fora do comum até onde você pode ver. Porém, 
-            mais alguns metros e você nota uma pequena fogueira.
-            Você se arrisca um pouco, aproximando-se calmamente 
-            em busca de sinais de companhia''')
-        elif(comando=='O'):
-            print('''Você se mantém na posição atual. Prestando atenção na floresta. 
-            Você está certo de que sente um calafrio daqueles que te falam que algo o observa''')
-        else:
-            print("Selecione uma opção válida.")
-
+    if (comando==1):
+        print('''Nada fora do comum até onde você pode ver. Porém, 
+        mais alguns metros e você nota uma pequena fogueira.
+        Você se arrisca um pouco, aproximando-se calmamente 
+        em busca de sinais de companhia''')
+    elif(comando==2):
+        print('''Você se mantém na posição atual. Prestando atenção na floresta. 
+        Você está certo de que sente um calafrio daqueles que te falam que algo o observa''')
 
     #combat
     
@@ -191,22 +186,18 @@ def cidade(player: Player) -> int:
     sua impaciência vem a tona. Mas não era de se esperar a vista que encontrara: enquanto se aproxima, sentindo
     um frio inexplicável, você vê uma estátua de gelo no lugar do senhor que lhe atendera.''')
 
-
-    comando = input("Inspecionar a estátua ou chamar por ajuda?(I/A")
-    
-    while(comando==False):
-        if(comando=='I'):
-            print('''Observando cuidadosamente a estátua de gelo, você se atreve a dizer que o próprio senhor
-            tornou-se uno com o gelo que o envolve. Isso está fora da sua alçada, e você não consegue pensar em
-            nada para ajudá-lo. Você também encontra um mapa levando a uma cabana fora da cidade, não tão longe 
-            da tumba que havia encontrado mais cedo.''')  
-        elif(comando=='A'):
-            print('''Antes de sair da joalheria, você encontra um mapa para uma cabana próxima,
-            jogado numa mesa próxima ao senhor congelado. Você corre para fora da joalheria, 
-            clamando pelos guardas mais próximos. As próximas horas são totalmente voltadas para 
-            o acontecimento.''')  
-        else:
-            print("Escolha uma opção válida.") 
+    comando = escolhasUser(["inspecionar a estátua","chamar por ajuda"])
+   
+    if(comando==1):
+        print('''Observando cuidadosamente a estátua de gelo, você se atreve a dizer que o próprio senhor
+        # tornou-se uno com o gelo que o envolve. Isso está fora da sua alçada, e você não consegue pensar em
+        # nada para ajudá-lo. Você também encontra um mapa levando a uma cabana fora da cidade, não tão longe 
+        # da tumba que havia encontrado mais cedo.''')  
+    elif(comando==2):
+        print('''Antes de sair da joalheria, você encontra um mapa para uma cabana próxima,
+        # jogado numa mesa próxima ao senhor congelado. Você corre para fora da joalheria, 
+        # clamando pelos guardas mais próximos. As próximas horas são totalmente voltadas para 
+        # o acontecimento.''')   
 
     print('''Você sabe que os guardas vão acobertar a situação até que o festival tenha terminado. Depois de 
     explicar tudo o que você sabia, eles deixam você voltar para a taverna. Nenhum de vocês tem ideia de como

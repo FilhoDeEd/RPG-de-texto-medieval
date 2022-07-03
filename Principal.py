@@ -12,9 +12,10 @@ nomePlayer = escolhas[0]
 classePlayer_ID = escolhas[1]
 classeNome = classes[classePlayer_ID][0]
 atributos = classes[classePlayer_ID][1]
-equipamentos = classes[classePlayer_ID][2]
+armaPrincipal = classes[classePlayer_ID][2]
+skill = classes[classePlayer_ID][3]
 
-player = Player(nomePlayer, classeNome, atributos, equipamentos)
+player = Player(nomePlayer, classeNome, atributos, armaPrincipal, skill)
 lvl = 0
 
 while not player.morto:
