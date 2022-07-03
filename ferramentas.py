@@ -16,8 +16,10 @@ def escolhasUser(opcoes: list[str]) -> int:
 
     valoresValidos = range(numOpcoes)
 
+    print(" ")
     for i in valoresValidos:
         print("{} para {}".format(i+1,opcoes[i]))
+    print(" ")
     
     while True:
         try:

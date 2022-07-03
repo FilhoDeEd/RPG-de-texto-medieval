@@ -27,7 +27,7 @@ def interface():
         print("  " + classes[i][2].nome)
 
         print("Skill de classe: ")
-        print(classes[i][3][0])
+        print("  " + classes[i][3][0])
 
         if i==0: print("\n         ({}/6)   d>>\n".format(i+1))
         elif i==4: print("\n   <<a   ({}/6)\n".format(i+1))

@@ -8,8 +8,6 @@ from ferramentas import escolhasUser
 def andando(player: Player) -> None:
 
         while True:
-            
-            print(" ")
 
             mainCommand = escolhasUser(["prosseguir","mexer nos itens","consumir uma poção","ver status"])
 
@@ -20,9 +18,8 @@ def andando(player: Player) -> None:
             #Mexer nos itens:
             elif mainCommand == 2:
                 
-                print(" ")
                 if player.mao == None:
-                    print("Sem item na mão")
+                    print("Sem item na mão\n")
                 else:
                     print("Item na mão: {}\n".format(player.mao.nome))
 
@@ -126,12 +123,11 @@ def andando(player: Player) -> None:
             #Consumir uma poção:
             elif mainCommand == 3:
                 
-                print(" ")
                 if type(player.mochila.itemTopo) == Potion:
                     print("Mochila:")
                     print("  {}".format(player.mochila.itemTopo.nome))
 
-                print("Cinto:")
+                print("\nCinto:")
                 for i in range(5):
                     print("  Slot {}".format(i+1))
                     for j in range(player.cinto.qtdItensSlots[i]):
@@ -208,10 +204,20 @@ def combate(player: Player, alvo: Inimigo) -> bool:
                     danoPlayer = player.atacar()
                     defesaInimigo = alvo.defender()
                     resultado = danoPlayer - defesaInimigo
+                    if resultado < 0:
+                        resultado = 0
+
                     alvo.vidaAtual -= resultado
+                    if alvo.vidaAtual <= 0:
+                        alvo.vidaAtual = 0
+                        alvo.morto = True
 
                     print("*Você infingiu {} de dano*".format(resultado))
-                    print("Vida do {}: {}/{}".format(alvo.nome, alvo.vidaAtual, alvo.vidaMaxima))
+
+                    if alvo.morto:
+                        print("Você derrotou {}".format(alvo.nome))
+                    else:    
+                        print("Vida do {}: {}/{}".format(alvo.nome, alvo.vidaAtual, alvo.vidaMaxima))
 
                     player.danoExtra = 0
                     player.lancesExtraDano = 0
@@ -219,7 +225,7 @@ def combate(player: Player, alvo: Inimigo) -> bool:
                 
                 elif combateCommand == 2:
 
-                    print("Cinto:")
+                    print("\nCinto:")
                     for i in range(5):
                         print("  Slot {}".format(i+1))
                         for j in range(player.cinto.qtdItensSlots[i]):
@@ -252,22 +258,25 @@ def combate(player: Player, alvo: Inimigo) -> bool:
             danoAlvo = alvo.atacar()
             defesaPlayer = player.defender()
             resultado = danoAlvo - defesaPlayer
+            if resultado < 0:
+                resultado = 0
+
             player.vidaAtual -= resultado
 
+            if player.vidaAtual <= 0:
+                player.vidaAtual = 0
+                player.morto = True
+
             print("*Você recebeu {} de dano*".format(resultado))
-            print("Sua vida: {}/{}".format(player.vidaAtual, player.vidaMaxima))
+
+            if player.morto:
+                print("Você morreu")
+            else:
+                print("Sua vida: {}/{}".format(player.vidaAtual, player.vidaMaxima))
 
             player.lancesExtraDefesa = 0
             player.defesaExtra = 0
             turnoPlayer = True
-
-        if player.vidaAtual <= 0:
-            player.vidaAtual = 0
-            player.morto = True
-        
-        if alvo.vidaAtual <= 0:
-            alvo.vidaAtual = 0
-            alvo.morto = True
 
         if player.morto or alvo.morto:
             player.inCombate = False

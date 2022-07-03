@@ -5,7 +5,7 @@ import random as rand
 
 def floresta(player: Player) -> int:
 
-    print('''Você se encontra a alguns metros da estrada principal. 
+    print('''    Você se encontra a alguns metros da estrada principal. 
     Ao seu redor, apenas o som de um riacho distante,
     mas você está certo de estar no caminho correto''')
 
@@ -14,13 +14,13 @@ def floresta(player: Player) -> int:
     comando = escolhasUser(["seguir em frente","observar um pouco"])
     
     if (comando==1):
-        print('''Nada fora do comum até onde você pode ver. Porém, 
-        mais alguns metros e você nota uma pequena fogueira.
-        Você se arrisca um pouco, aproximando-se calmamente 
-        em busca de sinais de companhia''')
+        print('''    Nada fora do comum até onde você pode ver. Porém, 
+    mais alguns metros e você nota uma pequena fogueira.
+    Você se arrisca um pouco, aproximando-se calmamente
+    em busca de sinais de companhia''')
     elif(comando==2):
-        print('''Você se mantém na posição atual. Prestando atenção na floresta. 
-        Você está certo de que sente um calafrio daqueles que te falam que algo o observa''')
+        print('''    Você se mantém na posição atual. Prestando atenção na floresta. 
+    Você está certo de que sente um calafrio daqueles que te falam que algo o observa''')
 
     morto = combate(player, goblin)
     if morto:
@@ -29,14 +29,14 @@ def floresta(player: Player) -> int:
         if goblin.temDrops:
             abrirBau(player, goblin.drops)
     
-    print('''Após o leve confronto, você fica cara a cara com seu agressor já derrotado.
+    print('''    Após o leve confronto, você fica cara a cara com seu agressor já derrotado.
     São poucos os relatos de goblins perambulando essa região, então é justo que você
     esteja se perguntando se é apenas uma quebra de rotina ou algo mais.''')
 
-    print('''Mesmo estranhando um pouco, você continua seu caminho. Coincidência ou não, 
+    print('''    Mesmo estranhando um pouco, você continua seu caminho. Coincidência ou não, 
     você ainda tem um objetivo para seguir''')
 
-    print('''Quase uma hora de viagem depois, você começa a notar uma mudança no ambiente.
+    print('''    Quase uma hora de viagem depois, você começa a notar uma mudança no ambiente.
     A floresta começa a se tornar mais fechada, e as árvores mais retorcidas, e aos poucos,
     você se vê forçado a parar frente a uma parede de vinhas rígidas e duras como madeira''')
 
@@ -45,24 +45,24 @@ def floresta(player: Player) -> int:
         comando = escolhasUser(["cortar","escalar"])
 
         if comando==1 and player.atributos["STR"]>=13:
-            print('''Apesar dessas vinhas serem verdadeiramente resistentes, 
-            você é capaz de tirá-las do caminho''')
+            print('''    Apesar dessas vinhas serem verdadeiramente resistentes, 
+        você é capaz de tirá-las do caminho''')
             break
         else:
-            print('''Mesmo colocando toda a sua força na tarefa, você se convence,
-            não há como arrancar as vinhas''')
+            print('''    Mesmo colocando toda a sua força na tarefa, você se convence,
+        não há como arrancar as vinhas''')
         
         if comando==2 and player.atributos["DEX"]>=13:
-            print('''Mesmo fortemente entrelaçadas, as vinhas possuem espaços
-            suficientes para que você escale a parede com segurança''')
+            print('''    Mesmo fortemente entrelaçadas, as vinhas possuem espaços
+        suficientes para que você escale a parede com segurança''')
             break
         else:
-            print('''Você consegue notar uma forma de escalar a parede, mas você cai 
-            em todas as suas tentativas de subi-la''')
+            print('''    Você consegue notar uma forma de escalar a parede, mas você cai 
+        em todas as suas tentativas de subi-la''')
 
     andando(player)
 
-    print ('''Com certo esforço, você se vê livre em uma nova parte da floresta, quase que
+    print ('''   Com certo esforço, você se vê livre em uma nova parte da floresta, quase que
     seguindo uma trilha construída há eras. Você confirma isso alguns metros a frente, 
     descendo uma pequena clareira que parece um acampamento abandonado, adentrando
     ainda mais por entre as árvores, até que você se vê no centro de um morro de pedras, sem luz

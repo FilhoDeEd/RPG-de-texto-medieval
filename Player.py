@@ -100,7 +100,7 @@ class Player:
 
         def mostrar(self) -> None:
             
-            print("Cinto:")
+            print("\nCinto:")
             for i in range(5):
                 print("  Slot {}".format(i+1))
                 for j in range(self.qtdItensSlots[i]):
