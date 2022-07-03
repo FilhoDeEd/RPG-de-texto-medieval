@@ -167,8 +167,6 @@ def andando(player: Player) -> None:
                 else:
                     player.overview()
 
-        print(" ")
-
 #Iniciar combate contra um inimigo:
 def combate(player: Player, alvo: Inimigo) -> bool:
     

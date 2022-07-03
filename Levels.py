@@ -1,6 +1,6 @@
 from GameObjects import *
 from Eventos import *
-from ferramentas import pause
+from ferramentas import pause, escolhasUser, clear
 import random as rand
 
 def floresta(player: Player) -> int:
@@ -69,6 +69,7 @@ def floresta(player: Player) -> int:
     print("*Fim da Floresta*")
     abrirBau(player,[pocaoCura, pocaoCura])
     pause()
+    clear()
 
     return 1
 
@@ -181,6 +182,7 @@ def tumba(player: Player) -> int:
     print("*Fim da Tumba*")
     abrirBau(player,[pocaoCura, pocaoEmbaralhar, pocaoForca, escudo])
     pause()
+    clear()
 
     return 1
 
@@ -249,6 +251,7 @@ def cidade(player: Player) -> int:
     print("*Fim da Cidade*")
     abrirBau(player,[corote])
     pause()
+    clear()
 
     return 1
 
@@ -292,6 +295,7 @@ def casaBruxa(player: Player) -> int:
     print("*Fim da Casa da Bruxa*")
     abrirBau(player,[pocaoForca ,pocaoResistencia, maca])
     pause()
+    clear()
 
     return 1
 
@@ -440,6 +444,7 @@ def deserto(player: Player) -> int:
     print("*Fim do Deserto*")
     abrirBau(player,[pocaoCura ,pocaoResistencia, pocaoForca, boomerang])
     pause()
+    clear()
 
     return 1
 

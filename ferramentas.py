@@ -19,7 +19,6 @@ def escolhasUser(opcoes: list[str]) -> int:
     print(" ")
     for i in valoresValidos:
         print("{} para {}".format(i+1,opcoes[i]))
-    print(" ")
     
     while True:
         try:
@@ -29,6 +28,7 @@ def escolhasUser(opcoes: list[str]) -> int:
         except:
             print("Escolha uma opção válida")
 
+    print(" ")
     return escolha
 
 #Um dado bem versátil. Você pode escolher o número de faces (por padrão é 6),
