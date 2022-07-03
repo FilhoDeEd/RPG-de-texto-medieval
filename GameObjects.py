@@ -7,7 +7,7 @@ from ferramentas import dado
 
 #Criar inimigos e suas skills aqui:
 
-esqueleto = Inimigo("Esqueleto",4,2)
+esqueleto = Inimigo("Esqueleto", 4, 2, 2)
 
 #Criar armas e suas skills aqui:
 

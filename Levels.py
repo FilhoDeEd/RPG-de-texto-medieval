@@ -41,12 +41,9 @@ def floresta(player: Player) -> int:
 
     while True:
 
-        while True:
-            comando = input("'E' para escalar ou 'C' para cortar")
-            if comando == 'E' or 'C': break
-            print("Escolha uma opção válida")
+        comando = escolhasUser(["cortar","escalar"])
 
-        if(comando=='C' and player.atributos["STR"]>=13):
+        if comando==1 and player.atributos["STR"]>=13:
             print('''Apesar dessas vinhas serem verdadeiramente resistentes, 
             você é capaz de tirá-las do caminho''')
             break
@@ -54,7 +51,7 @@ def floresta(player: Player) -> int:
             print('''Mesmo colocando toda a sua força na tarefa, você se convence,
             não há como arrancar as vinhas''')
         
-        if(comando=='E' and player.atributos["DEX"]>=13):
+        if comando==2 and player.atributos["DEX"]>=13:
             print('''Mesmo fortemente entrelaçadas, as vinhas possuem espaços
             suficientes para que você escale a parede com segurança''')
             break
