@@ -16,10 +16,14 @@ armaPrincipal = classes[classePlayer_ID][2]
 skill = classes[classePlayer_ID][3]
 
 player = Player(nomePlayer, classeNome, atributos, armaPrincipal, skill)
+gameOver = False
 lvl = 0
 
-while not player.morto:
+while not gameOver:
 
     levelCode = levels[lvl](player)
 
-    if levelCode == 1: lvl += 1
+    if levelCode == 1:
+        lvl += 1
+    elif levelCode == 0:
+        gameOver = True

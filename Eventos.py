@@ -99,14 +99,16 @@ def andando(player: Player) -> None:
                     if not cancelar:
                         
                         if type(player.mao) == Potion:
-                            itemMaoCommand = escolhasUser(["beber","dropar","cancelar"])
+                            itemMaoCommand = escolhasUser(["beber","ver descrição","dropar","cancelar"])
 
-                            if itemMaoCommand == 3:
+                            if itemMaoCommand == 4:
                                 pass
                             elif itemMaoCommand == 1:
                                 potion = player.mao
                                 player.mao = beberPocao(player, potion)
-                            else:
+                            elif itemMaoCommand == 2:
+                                print(player.mao.descricao)
+                            elif itemMaoCommand == 3:
                                 player.mao = None
 
                         elif type(player.mao) == Arma:
@@ -172,8 +174,9 @@ def andando(player: Player) -> None:
         print(" ")
 
 #Iniciar combate contra um inimigo:
-def combate(player: Player, alvo: Inimigo) -> None:
+def combate(player: Player, alvo: Inimigo) -> bool:
     
+    player.inCombate = True
     turnoPlayer = True
     acaoSkill = True
 
@@ -203,11 +206,13 @@ def combate(player: Player, alvo: Inimigo) -> None:
                     danoPlayer = player.atacar()
                     defesaInimigo = alvo.defender()
                     resultado = danoPlayer - defesaInimigo
+                    alvo.vidaAtual -= resultado
 
                     print("*Você infingiu {} de dano*".format(resultado))
                     print("Vida do {}: {}/{}".format(alvo.nome, alvo.vidaAtual, alvo.vidaMaxima))
 
-                    alvo.vidaAtual -= resultado
+                    player.danoExtra = 0
+                    player.lancesExtraDano = 0
                     turnoPlayer = False
                 
                 elif combateCommand == 2:
@@ -251,6 +256,8 @@ def combate(player: Player, alvo: Inimigo) -> None:
             print("*Você recebeu {} de dano*".format(resultado))
             print("Sua vida: {}/{}".format(player.vidaAtual, player.vidaMaxima))
 
+            player.lancesExtraDefesa = 0
+            player.defesaExtra = 0
             turnoPlayer = True
 
         if player.vidaAtual <= 0:
@@ -262,8 +269,8 @@ def combate(player: Player, alvo: Inimigo) -> None:
             alvo.morto = True
 
         if player.morto or alvo.morto:
-            break
-
+            player.inCombate = False
+            return player.morto
 
 #Quando o player precisar receber recompensas:
 def abrirBau(player: Player, itens: list[(Arma | Potion)]) -> None:

@@ -5,53 +5,28 @@ from Potion import Potion
 from Inimigo import Inimigo
 from ferramentas import dado
 
-#Criar inimigos e suas skills aqui:
-
-esqueleto = Inimigo("Esqueleto", 4, 2, 2)
-goblin = Inimigo("Goblin", 0, 0, 0)
-esqueleto_Monge = Inimigo("Esqueleto do Monge", 0, 0, 0)
-lobo = Inimigo("Lobo", 0, 0, 0)
-escorpião = Inimigo("Escorpião", 0, 0, 0)
-outono = Inimigo("Outono", 0, 0, 0)
-
 #Criar armas aqui:
 
+    #Lixo:
 pedra = Arma("Pedra", True, 1, 0)
-
-machado = Arma("Pedra", True, 0, 0) #Bárbaro
-espada = Arma("Espada", True, 0, 0) #Soldado
-arco = Arma("Arco", False, 0, 0) #Patrulheiro
-adaga = Arma("Adaga", True, 0, 0) #Ladrão - Goblin - DROP
-martelo = Arma("Martelo", True, 0, 0) #Clérigo
-foco_arcano = Arma("Foco Arcano", True, 0, 0) #Mago
-punho = Arma("Punho", True, 0, 0) #Esqueleto do Monge
-presas = Arma("Pesas", True, 0, 0) #Lobo
-cauda_venenosa = Arma("Cauda Venenosa", True, 0, 0) #Escorpião - DROP
-arma_natural = Arma("Arma Natural", True, 0, 0) #Outono
-besta = Arma("Besta", False, 0, 0) #Achado
-maca = Arma("Maça", True, 0, 0) #Achado
-boomerang = Arma("Boomerang", False, 0, 0) #Achado
-
-#Criar skills aqui:
-
-
-def furia(player: Player, alvo: Inimigo):
-    pass
-
-def ataque_extra(player: Player, alvo: Inimigo):
-    pass
-
-def especializacao(player: Player, alvo: Inimigo):
-    pass
-
-def ataque_furtivo(player: Player, alvo: Inimigo):
-    pass
-
-def luz_da_punicao(player: Player, alvo: Inimigo):
-    pass
-
-def bola_de_fogo(player: Player, alvo: Inimigo):
-    pass
+osso = Arma("Osso", True, 1, 1)
+couro = Arma("Couro",True, 0, 1)
+    #Armas iniciais:
+machado = Arma("Machado", True, 8, 3) #Bárbaro
+espada = Arma("Espada", True, 6, 2) #Soldado
+arco = Arma("Arco", False, 6, 1) #Patrulheiro
+adaga = Arma("Adaga", True, 4, 1) #Ladrão - Goblin - DROP
+martelo = Arma("Martelo", True, 7, 2) #Clérigo
+foco_arcano = Arma("Foco Arcano", False, 9, 0) #Mago
+    #Outras armas
+punho = Arma("Punho", True, 2, 2) #Esqueleto do Monge
+presas = Arma("Presas", True, 4, 0) #Lobo
+cauda_venenosa = Arma("Cauda Venenosa", True, 7, 2) #Escorpião - DROP
+arma_natural = Arma("Arma Natural", True, 10, 3) #Outono
+besta = Arma("Besta", False, 7, 2) #Achado
+maca = Arma("Maça", True, 8, 2) #Achado
+boomerang = Arma("Boomerang", False, 3, 1) #Achado
+escudo = Arma("Escudo", True, 2, 6) #Achado
 
 #Criar poções e seus efeitos aqui:
 def curar(player: Player) -> None:
@@ -67,6 +42,28 @@ def curar(player: Player) -> None:
 
 pocaoCura = Potion("Poção de Cura","Cura uma quantidade aleatória de vida",[curar])
 
+def forca(player: Player) -> None:
+    
+    print("*Força*")
+
+    if player.inCombate:
+        player.danoExtra += 3
+    else:
+        player.danoExtra = 3
+
+pocaoForca = Potion("Poção de Força","Aumenta o seu dano em 3 até o seu próximo ataque",[forca])
+
+def resistencia(player: Player) -> None:
+    
+    print("*Resistência*")
+
+    if player.inCombate:
+        player.defesaExtra += 2
+    else:
+        player.defesaExtra = 2
+
+pocaoResistencia = Potion("Poção de Resistência","Aumenta a sua defesa em 2 até sua próxima defesa",[resistencia])
+
 def shuffle(player: Player) -> None:
     
     print("*Embaralhar*")
@@ -75,8 +72,56 @@ def shuffle(player: Player) -> None:
 
 pocaoEmbaralhar = Potion("Embaralhar","Embaralhar os itens de sua mochila",[shuffle])
 
-#fazer uma poção que retira um item aleatório da mochila
-#É só usar random.choice()
+#Criar inimigos e suas skills aqui:
+
+esqueleto = Inimigo("Esqueleto", 8, pedra, [pedra, osso])
+goblin = Inimigo("Goblin", 26, adaga, [adaga, pocaoCura])
+esqueleto_monge = Inimigo("Esqueleto do Monge", 32, punho)
+lobo = Inimigo("Lobo", 20, presas, [couro, pocaoForca])
+escorpiao = Inimigo("Escorpião", 30, cauda_venenosa, [cauda_venenosa, pocaoEmbaralhar])
+outono = Inimigo("Outono", 40, arma_natural)
+
+#----------------------------------------------------------------------------------------------
+
+#Criar skills aqui:
+
+def furia(player: Player, alvo: Inimigo):
+    
+    print("*Fúria*")
+
+    player.defesaExtra += 5
+
+def ataque_extra(player: Player, alvo: Inimigo):
+    
+    print("*Ataque Extra*")
+
+    player.danoExtra += player.armaPrincipal.dano
+
+def especializacao(player: Player, alvo: Inimigo):
+    
+    print("*Especialização*")
+
+    alvo.vidaAtual -= 6
+
+def ataque_furtivo(player: Player, alvo: Inimigo):
+    
+    print("*Ataque Furtivo*")
+
+    player.lancesExtraDano += 2
+
+def luz_da_punicao(player: Player, alvo: Inimigo):
+    
+    print("*Luz da Punição*")
+
+    curar(player)
+
+    alvo.vidaAtual -= 3
+
+def bola_de_fogo(player: Player, alvo: Inimigo):
+    
+    print("*Bola de Fogo*")
+
+    alvo.vidaAtual -= 15
 
 #----------------------------------------------------------------------------------------------
 

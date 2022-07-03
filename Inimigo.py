@@ -5,7 +5,7 @@ from ferramentas import dado
 
 class Inimigo:
 
-    def __init__(self, nome: str, vidaMaxima: int, arma: Arma, drops: list[(Arma | Potion)], skills: list[Callable] = []):
+    def __init__(self, nome: str, vidaMaxima: int, arma: Arma, drops: list[(Arma | Potion)] = [], skills: list[Callable] = []):
 
         #Informações básicas:
         self.nome = nome
@@ -17,8 +17,13 @@ class Inimigo:
         #Combate:
         self.skills = skills
         self.arma = arma
-        self.drops = drops
         self.morto = False
+        if len(drops) == 0:
+            self.temDrops = False 
+            self.drops = []
+        else:
+            self.temDrops = True
+            self.drops = drops
 
     def atacar(self) -> int:
         

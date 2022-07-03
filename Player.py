@@ -133,6 +133,11 @@ class Player:
         self.skillNome = skill[0]
         self.skill = skill[1]
         self.morto = False
+        self.danoExtra = 0
+        self.lancesExtraDano = 0
+        self.defesaExtra = 0
+        self.lancesExtraDefesa = 0
+        self.inCombate = False
 
     #Visão geral sobre o personagem:
     def overview(self) -> None:
@@ -147,7 +152,7 @@ class Player:
             print("Defesa: {}".format(self.armaPrincipal.defesa))
         else:
             print("Sem arma principal")
-            
+
         print("Vida Atual: {}/{}".format(self.vidaAtual,self.vidaMaxima))
 
         print("Atributos: ")
@@ -169,9 +174,13 @@ class Player:
     #Calcular ataque:
     def atacar(self) -> int:
         
-        return self.armaPrincipal.dano + dado(6)
+        lances = 1 + self.lancesExtraDano
+
+        return self.armaPrincipal.dano + dado(6, lances, True) + self.danoExtra
     
     #Calcular defesa:
     def defender(self) -> int:
         
-        return self.armaPrincipal.defesa + dado(6)
+        lances = 1 + self.lancesExtraDefesa
+
+        return self.armaPrincipal.defesa + dado(6, lances, True) + self.danoExtra

@@ -23,7 +23,8 @@ def floresta(player: Player) -> int:
         print('''Você se mantém na posição atual. Prestando atenção na floresta. 
         Você está certo de que sente um calafrio daqueles que te falam que algo o observa''')
 
-    #combat
+    morto = combate(player, goblin)
+    if morto: return 0
     
     print('''Após o leve confronto, você fica cara a cara com seu agressor já derrotado.
     São poucos os relatos de goblins perambulando essa região, então é justo que você
@@ -230,7 +231,6 @@ def casaBruxa(player: Player) -> int:
 
     #combat
         
-
     print('''Você abandona o animal caído e continua seu caminho até encontrar a cabana mostrada em seu mapa. 
     É uma casa humilde de madeira. Você sente o cheiro de algo sendo preparado do lado de dentro. Você bate
     a porta, e uma mulher com por volta dos seus 30 anos o atende.''')
