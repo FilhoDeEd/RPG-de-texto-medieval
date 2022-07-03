@@ -9,9 +9,38 @@ from ferramentas import dado
 
 esqueleto = Inimigo("Esqueleto", 4, 2, 2)
 
-#Criar armas e suas skills aqui:
+Goblin = Inimigo("Goblin", 0, 0, 0)
+Esqueleto_Monge = Inimigo("Esqueleto do Monge", 0, 0, 0)
+Lobo = Inimigo("Lobo", 0, 0, 0)
+Escorpião = Inimigo("Escorpião", 0, 0, 0)
+Outono = Inimigo("Outono", 0, 0, 0)
+
+
+#Criar armas aqui:
 
 pedra = Arma("Pedra", True, 1, 0)
+
+Machado = Arma("Pedra", True, 0, 0) #Bárbaro
+Espada = Arma("Espada", True, 0, 0) #Soldado
+Arco = Arma("Arco", False, 0, 0) #Patrulheiro
+Adaga = Arma("Adaga", True, 0, 0) #Ladrão - Goblin - DROP
+Martelo = Arma("Martelo", True, 0, 0) #Clérigo
+Foco_Arcano = Arma("Foco Arcano", True, 0, 0) #Mago
+Punho = Arma("Punho", True, 0, 0) #Esqueleto do Monge
+Presas = Arma("Pesas", True, 0, 0) #Lobo
+Cauda_Venenosa = Arma("Cauda Venenosa", True, 0, 0) #Escorpião - DROP
+Arma_Natural = Arma("Arma Natural", True, 0, 0) #Outono
+Besta = Arma("Besta", False, 0, 0) #Achado
+Maça = Arma("Maça", True, 0, 0) #Achado
+Boomerang = Arma("Boomerang", False, 0, 0) #Achado
+
+#Criar skills aqui:
+Furia = Skill("Furia", ) #Bárbaro
+Ataque_Extra = Skill("Ataque Extra", ) #Soldado
+Especialização = Skill("Especialização", ) #Patrulheiro
+Ataque_Furtivo = Skill("Ataque Furtivo", ) #Ladrão
+Luz_da_Punição = Skill("Luz da Punição", ) #Clérigo
+Bola_de_Fogo = Skill("Bola de Fogo", ) #Mago
 
 #Criar poções e seus efeitos aqui:
 def curar(player: Player) -> None:
