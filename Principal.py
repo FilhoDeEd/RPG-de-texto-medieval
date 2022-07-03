@@ -5,6 +5,11 @@ from ferramentas import clear
 
 #O jogo foi construido utilizando a versão 3.10.5 do Python
 
+#Responsáveis por este projeto:
+    #Allan Bastos da Silva
+    #André Lisboa Augusto
+    #Edson Rodrigues da Cruz Filho
+
 escolhas = interface()
 
 nomePlayer = escolhas[0]
