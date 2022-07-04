@@ -107,7 +107,7 @@ no entanto, você tem um pressentimento: talvez este lugar seja um labirinto. Vo
     if comando==1 and player.atributos["INT"]>=13:
         print('''Parando por alguns minutos para estudar o lugar, você compreende: os caminhos certos são aqueles que 
     possuem um único esqueleto em sua direção. A partir de agora, você sabe por onde ir.''')
-    else:
+    elif comando == 1:
         print('''Apesar de se concentrar o máximo que pode, nada desse lugar te parece dar uma luz no caminho certo. 
     Sinceramente, todo o lugar parece igual para você.''')
         
@@ -121,15 +121,13 @@ no entanto, você tem um pressentimento: talvez este lugar seja um labirinto. Vo
             print('''Você consegue ler alguns detalhes das paredes: essa tumba foi construída eras atrás em homenagem ao Sol e sua 
         vitória sobre o Inverno, mas, anos depois, o lugar seria deixado por todos, menos os monges que se instalaram. Você agora sabe
         quem são os donos dos esqueletos.''')
-    else:
+    elif comando == 2:
         print('''Você tem certeza que vai se perder, mas apenas isso.''')
     
     contadorCerto = 0
     contadorErrado = 0
 
     while contadorCerto < 7:
-        
-        observar = escolhasUser(["observar","prosseguir"])
 
         numCaminhos = rand.randint(2,4)
 
