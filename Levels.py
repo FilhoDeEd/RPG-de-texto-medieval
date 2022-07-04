@@ -144,7 +144,7 @@ quem são os donos dos esqueletos.\n''')
 
         for i in range(numCaminhos):
 
-            nomeCaminhos.append("caminho" + str(i+1))
+            nomeCaminhos.append("caminho " + str(i+1))
 
         caminhoEscolhido = escolhasUser(nomeCaminhos)
 

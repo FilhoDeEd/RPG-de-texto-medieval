@@ -146,14 +146,23 @@ def andando(player: Player) -> None:
                         beberPocao(player,potionBeber)
 
                 if potionBeber == None:
+
+                    sair = False
+
                     for i in range(5):
-                        for j in range(player.cinto.qtdItensSlots[i]):
+
+                        for j in range(len(player.cinto.matrizCinto[i])):
+
                             if type(player.cinto.matrizCinto[i][j]) == Potion:
                                 if nomePotion == player.cinto.matrizCinto[i][j].nome:
                                     potionBeber = player.cinto.matrizCinto[i].pop(j)
                                     player.cinto.cargaAtualSlot[i] -= 1
                                     player.cinto.qtdItensSlots[i] -= 1
                                     beberPocao(player,potionBeber)
+                                    sair = True
+
+                        if sair:
+                            break
 
                 if potionBeber == None:
                     print("*Poção não encontrada*")
@@ -233,9 +242,12 @@ def combate(player: Player, alvo: Inimigo) -> bool:
                     nomePotion = input("\nDigite o nome da poção: ")
 
                     potionBeber = None
+                    sair = False
 
                     for i in range(5):
-                            for j in range(player.cinto.qtdItensSlots[i]):
+
+                            for j in range(len(player.cinto.matrizCinto[i])):
+
                                 if type(player.cinto.matrizCinto[i][j]) == Potion:
                                     if nomePotion == player.cinto.matrizCinto[i][j].nome:
                                         potionBeber = player.cinto.matrizCinto[i].pop(j)
@@ -243,6 +255,10 @@ def combate(player: Player, alvo: Inimigo) -> bool:
                                         player.cinto.qtdItensSlots[i] -= 1
                                         beberPocao(player,potionBeber)
                                         acaoPotion = False
+                                        sair = True
+
+                            if sair:
+                                break
 
                     if potionBeber == None:
                         print("*Poção não encontrada*")
