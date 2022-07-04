@@ -42,17 +42,17 @@ parar frente a uma parede de vinhas rígidas e duras como madeira''')
 
         comando = escolhasUser(["cortar","escalar"])
 
-        if comando==1 and player.atributos["STR"]>=13:
+        if comando == 1 and player.atributos["STR"]>=13:
             print('''Apesar dessas vinhas serem verdadeiramente resistentes, você é capaz de tirá-las do caminho''')
             break
-        else:
+        elif comando == 1:
             print('''Mesmo colocando toda a sua força na tarefa, você se convence, não há como arrancar as vinhas''')
         
         if comando==2 and player.atributos["DEX"]>=13:
             print('''Mesmo fortemente entrelaçadas, as vinhas possuem espaços suficientes para que você escale 
         a parede com segurança''')
             break
-        else:
+        elif comando == 2:
             print('''Você consegue notar uma forma de escalar a parede, mas você cai  em todas as suas tentativas 
         de subi-la''')
 
